@@ -1,4 +1,4 @@
 package com.babydrivers.babydriversserver.service;
 
-public interface RoomServiceInterface {
+public interface CustomerService {
 }
