@@ -2,10 +2,14 @@ package com.babydrivers.babydriversserver.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Data
 @Table(name = "customers")
+@Setter
+@Getter
 public class Customer {
 
     @Id
