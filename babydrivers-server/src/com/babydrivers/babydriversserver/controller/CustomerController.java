@@ -1,6 +1,6 @@
 package com.babydrivers.babydriversserver.controller;
 
-import com.babydrivers.babydriversserver.model.Customer;
+import com.babydrivers.babydriversserver.entity.Customer;
 import com.babydrivers.babydriversserver.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

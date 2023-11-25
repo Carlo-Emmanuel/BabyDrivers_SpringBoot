@@ -1,6 +1,6 @@
 package com.babydrivers.babydriversserver.controller;
 
-import com.babydrivers.babydriversserver.model.Room;
+import com.babydrivers.babydriversserver.entity.Room;
 import com.babydrivers.babydriversserver.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

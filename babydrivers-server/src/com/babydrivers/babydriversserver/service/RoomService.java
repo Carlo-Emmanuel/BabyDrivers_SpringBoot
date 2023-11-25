@@ -1,6 +1,6 @@
 package com.babydrivers.babydriversserver.service;
 
-import com.babydrivers.babydriversserver.model.Room;
+import com.babydrivers.babydriversserver.entity.Room;
 import com.babydrivers.babydriversserver.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

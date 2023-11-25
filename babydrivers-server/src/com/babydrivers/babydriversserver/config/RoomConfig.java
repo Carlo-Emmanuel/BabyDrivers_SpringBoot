@@ -1,12 +1,6 @@
 package com.babydrivers.babydriversserver.config;
 
-import com.babydrivers.babydriversserver.model.Room;
-import com.babydrivers.babydriversserver.repository.RoomRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.math.BigDecimal;
 
 @Configuration
 public class RoomConfig {

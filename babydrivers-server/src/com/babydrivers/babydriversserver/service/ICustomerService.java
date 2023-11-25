@@ -1,6 +1,6 @@
 package com.babydrivers.babydriversserver.service;
 
-import com.babydrivers.babydriversserver.model.Customer;
+import com.babydrivers.babydriversserver.entity.Customer;
 
 public interface ICustomerService {
 

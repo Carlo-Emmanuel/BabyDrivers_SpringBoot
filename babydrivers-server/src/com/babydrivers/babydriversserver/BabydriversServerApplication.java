@@ -1,6 +1,6 @@
 package com.babydrivers.babydriversserver;
 
-import com.babydrivers.babydriversserver.model.Room;
+import com.babydrivers.babydriversserver.entity.Room;
 import com.babydrivers.babydriversserver.repository.RoomRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

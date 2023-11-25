@@ -1,9 +1,7 @@
-package com.babydrivers.babydriversserver.model;
+package com.babydrivers.babydriversserver.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Data
