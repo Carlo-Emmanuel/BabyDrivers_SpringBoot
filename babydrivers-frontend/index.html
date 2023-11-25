@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .booking-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-placeholder {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-placeholder img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Hotel Booking</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Contact</a>
+    <a href="#">Admin</a>
+</nav>
+
+<div class="container">
+    <div class="booking-form">
+        <h2>Book a Room</h2>
+        <form action="#" method="post">
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" name="roomType" required>
+                <option value="standard">Standard Room</option>
+                <option value="deluxe">Deluxe Room</option>
+                <option value="suite">Suite</option>
+            </select>
+
+            <label for="checkIn">Check-In Date:</label>
+            <input type="date" id="checkIn" name="checkIn" required>
+
+            <label for="checkOut">Check-Out Date:</label>
+            <input type="date" id="checkOut" name="checkOut" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <div class="room-placeholder">
+        <h2>Room Options</h2>
+        <div>
+            <img src="room1.jpg" alt="Room 1">
+            <p>Description of Room 1. Price: $100 per night.</p>
+            <button>Select Room</button>
+        </div>
+
+        <div>
+            <img src="room2.jpg" alt="Room 2">
+            <p>Description of Room 2. Price: $150 per night.</p>
+            <button>Select Room</button>
+        </div>
+
+        <div>
+            <img src="room3.jpg" alt="Room 3">
+            <p>Description of Room 3. Price: $200 per night.</p>
+            <button>Select Room</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
