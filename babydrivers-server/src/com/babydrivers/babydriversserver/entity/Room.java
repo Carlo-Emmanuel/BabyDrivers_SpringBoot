@@ -11,8 +11,6 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @Table(name = "rooms")
-@Setter
-@Getter
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
