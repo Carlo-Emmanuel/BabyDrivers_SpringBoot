@@ -16,6 +16,8 @@ public class RoomServiceImpl implements RoomService {
     public RoomServiceImpl(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
+
+    @Override
     public List<Room> getRooms() {
         return roomRepository.findAll();
     }
