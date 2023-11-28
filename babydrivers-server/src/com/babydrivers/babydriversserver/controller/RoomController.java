@@ -1,7 +1,7 @@
 package com.babydrivers.babydriversserver.controller;
 
 import com.babydrivers.babydriversserver.entity.Room;
-import com.babydrivers.babydriversserver.service.RoomService;
+import com.babydrivers.babydriversserver.service.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,16 +13,16 @@ import java.util.List;
 @RequestMapping("/rooms")
 public class RoomController {
 
-    private final RoomService roomService;
+    private final RoomServiceImpl roomServiceImpl;
 
     @Autowired
-    public RoomController(RoomService roomService) {
-        this.roomService = roomService;
+    public RoomController(RoomServiceImpl roomServiceImpl) {
+        this.roomServiceImpl = roomServiceImpl;
     }
 
     @GetMapping("/all-rooms")
     public List<Room> getRooms() {
-        return roomService.getRooms();
+        return roomServiceImpl.getRooms();
     }
 
 }
