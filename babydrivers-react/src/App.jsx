@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+
+import { NavBar } from './components/NavBar';
+import HomeBody from './components/HomeBody';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ImageCarousel from './components/ImageCarousel';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+function App() {
   return (
     <Router>
-    
-      <div>
-        <ImageCarousel />
-        </div>
+      <div className="App">
+        <NavBar></NavBar>
+        <HomeBody></HomeBody>
+      </div>
     </Router>
-  )
+  );
+        <ImageCarousel />
 }
 
-export default App
+export default App;
