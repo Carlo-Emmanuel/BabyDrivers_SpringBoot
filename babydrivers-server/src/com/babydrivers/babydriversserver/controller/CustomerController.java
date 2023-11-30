@@ -1,7 +1,7 @@
 package com.babydrivers.babydriversserver.controller;
 
 import com.babydrivers.babydriversserver.entity.Customer;
-import com.babydrivers.babydriversserver.service.CustomerService;
+import com.babydrivers.babydriversserver.service.CustomerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private CustomerService customerService;
+    private CustomerServiceImpl customerServiceImpl;
 
     @Autowired
-    public CustomerController(CustomerService customerService){
-        this.customerService = customerService;
+    public CustomerController(CustomerServiceImpl customerServiceImpl){
+        this.customerServiceImpl = customerServiceImpl;
     }
 
     @PostMapping("/create")
     public void createCustomer(@RequestBody Customer customer) {
-         customerService.createCustomer(customer);
+         customerServiceImpl.createCustomer(customer);
     }
 
 }
