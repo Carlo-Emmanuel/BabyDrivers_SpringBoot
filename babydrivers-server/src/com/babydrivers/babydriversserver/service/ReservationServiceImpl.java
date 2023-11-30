@@ -51,6 +51,9 @@ public class ReservationServiceImpl implements ReservationService {
         return UUID.randomUUID().toString().substring(0, 8);
     }
 
-    public
+    //Get reservation by id
+    public Reservation getReservationById(Long reservationId){
+        return reservationRepository.findById(reservationId).orElse(null);
+    }
 
 }
