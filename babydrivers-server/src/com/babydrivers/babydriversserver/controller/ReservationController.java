@@ -14,7 +14,8 @@ public class ReservationController {
     @Autowired
     private ReservationServiceImpl reservationService;
 
-    @PostMapping
+    //POST endpoint to create reservation
+    @PostMapping("/create")
     public ResponseEntity<Reservation> createReservation(@RequestBody ReservationRequest request){
         try{
             Reservation reservation = reservationService.createReservation(request.getFirstName(),
@@ -31,6 +32,7 @@ public class ReservationController {
         }
     }
 
+    //GET endpoint to get reservation by id
     @GetMapping("/{reservationId}")
     public ResponseEntity<Reservation> getReservationById(@PathVariable Long reservationId){
         Reservation reservation = reservationService.getReservationById(reservationId);
@@ -40,6 +42,34 @@ public class ReservationController {
         }
         else{
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    //PUT endpoint to edit reservation
+    @PutMapping("/{reservationId}")
+    public ResponseEntity<Reservation> editReservation(@PathVariable Long reservationId, @RequestBody ReservationRequest request){
+        try{
+//          ResponseEntity<Reservation> newReservation = reservationService.editReservation(reservationId, request);
+//          return newReservation;
+
+            //Trying out inline return statement suggested by IntelliJ
+            return reservationService.editReservation(reservationId, request);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    //DELETE endpoint to cancel reservation
+    @DeleteMapping("/cancel/{reservationNo}")
+    public ResponseEntity<String> cancelReservation(@PathVariable String reservationNo){
+        try{
+//            ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
+//            return cancelledReservation;
+
+            //Trying out inline return statement suggested by IntelliJ
+            return reservationService.cancelReservation(reservationNo);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().build();
         }
     }
 }
