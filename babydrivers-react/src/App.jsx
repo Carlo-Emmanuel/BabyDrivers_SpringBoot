@@ -1,6 +1,7 @@
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import HomeBody from "./components/HomeBody";
+import Form from "./components/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -10,7 +11,15 @@ function App() {
       <div className="App">
         <NavBar></NavBar>
         <Routes>
-          <Route path="/" element={<HomeBody></HomeBody>}></Route>
+          <Route
+            path="/"
+            element={
+              <>
+                <HomeBody></HomeBody>
+              </>
+            }
+          ></Route>
+          <Route path="/reservation" element={<Form></Form>}></Route>
         </Routes>
       </div>
     </Router>
