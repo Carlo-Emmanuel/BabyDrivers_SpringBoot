@@ -1,9 +1,10 @@
-import "./App.css";
 import { NavBar } from "./components/NavBar";
 import HomeBody from "./components/HomeBody";
 import Form from "./components/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css";
+import ImageCarousel from "./components/ImageCarousel";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       </div>
     </Router>
   );
+  <ImageCarousel />;
 }
 
 export default App;
