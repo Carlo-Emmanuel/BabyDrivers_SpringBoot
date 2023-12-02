@@ -33,9 +33,9 @@ public class ReservationController {
     }
 
     //GET endpoint to get reservation by id
-    @GetMapping("/{reservationId}")
-    public ResponseEntity<Reservation> getReservationById(@PathVariable Long reservationId){
-        Reservation reservation = reservationService.getReservationById(reservationId);
+    @GetMapping("/{reservationNo}")
+    public ResponseEntity<Reservation> getReservationById(@PathVariable String reservationNo){
+        Reservation reservation = reservationService.getReservationByReservationNo(reservationNo);
 
         if(reservation != null){
             return ResponseEntity.ok(reservation);
@@ -63,11 +63,11 @@ public class ReservationController {
     @DeleteMapping("/cancel/{reservationNo}")
     public ResponseEntity<String> cancelReservation(@PathVariable String reservationNo){
         try{
-//            ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
-//            return cancelledReservation;
+            ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
+            return cancelledReservation;
 
             //Trying out inline return statement suggested by IntelliJ
-            return reservationService.cancelReservation(reservationNo);
+//            return reservationService.cancelReservation(reservationNo);
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
         }

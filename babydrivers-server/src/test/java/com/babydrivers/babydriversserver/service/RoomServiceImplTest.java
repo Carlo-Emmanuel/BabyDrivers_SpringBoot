@@ -1,12 +1,15 @@
 package com.babydrivers.babydriversserver.service;
 
+import com.babydrivers.babydriversserver.entity.Reservation;
 import com.babydrivers.babydriversserver.entity.Room;
 import com.babydrivers.babydriversserver.repository.RoomRepository;
+import com.babydrivers.babydriversserver.request.ReservationRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -71,4 +74,34 @@ public class RoomServiceImplTest {
         assertNull(result);
     }
 
+    //Not sure if will be used
+//    @Test
+//    public ResponseEntity<String> checkPartySizeAndCreateReservation(ReservationRequest request) {
+//        //Check if request is null
+//        if (request == null) {
+//            return ResponseEntity.badRequest().body("Invalid reservation request");
+//        }
+//
+//        //Check if party size exceeds limit
+//        if (request.getPartySize() > 6) {
+//            return ResponseEntity.badRequest().body("Party size cannot exceed 6");
+//        }
+//
+//
+//        Reservation reservation = createReservation(request);
+//
+//        //Check if reservation is null
+//        if (reservation == null) {
+//            return ResponseEntity.internalServerError().body("Failed to create reservation");
+//        }
+//        return ResponseEntity.ok("Reservation created successfully");
+//    }
+//
+//    private Reservation createReservation(ReservationRequest request) {
+//        return null;
+//    }
+
+
 }
+
+

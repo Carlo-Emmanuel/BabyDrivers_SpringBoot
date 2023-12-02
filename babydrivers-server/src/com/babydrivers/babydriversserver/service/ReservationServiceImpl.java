@@ -18,7 +18,7 @@ public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
     private final RoomService roomService;
 
-    //Not sure if will need this
+    //Not sure if we'll need this
 //    @Autowired
 //    public ReservationServiceImpl(ReservationRepository reservationRepository) {
 //        this.reservationRepository = reservationRepository;
@@ -32,6 +32,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     //Create reservation
+    @Override
     public Reservation createReservation(String firstName,
                                      String lastName,
                                      LocalDate checkInDate,
@@ -55,16 +56,25 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     //Generate unique reservation number
+    @Override
     public String generateReservationNo(){
         return UUID.randomUUID().toString().substring(0, 8);
     }
 
     //Get reservation by id
+    @Override
     public Reservation getReservationById(Long reservationId){
         return reservationRepository.findById(reservationId).orElse(null);
     }
 
+    //Get reservation by reservation number
+    @Override
+    public Reservation getReservationByReservationNo(String reservationNo){
+        return reservationRepository.findByReservationNo(reservationNo);
+    }
+
     //Edit reservation
+    @Override
     public ResponseEntity<Reservation> editReservation(Long reservationId, ReservationRequest request) {
         Reservation existingReservation = reservationRepository.findById(reservationId).orElse(null);
 
@@ -89,17 +99,20 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     //Cancel reservation
+    @Override
     public ResponseEntity<String> cancelReservation(String reservationNo){
         Reservation reservation = reservationRepository.findByReservationNo(reservationNo);
 
         //If found, delete reservation with response message
         if(reservation != null){
             reservationRepository.delete(reservation);
-            return ResponseEntity.ok("Reservation" + reservationNo + "has been cancelled");
+            return ResponseEntity.ok("Reservation " + reservationNo + " has been cancelled");
         }
         else{
             return ResponseEntity.notFound().build();
         }
     }
+
+
 
 }

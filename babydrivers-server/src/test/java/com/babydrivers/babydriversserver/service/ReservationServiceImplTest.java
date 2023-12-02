@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -82,6 +84,7 @@ public class ReservationServiceImplTest {
 
         Reservation result = reservationService.getReservationById(reservationId);
 
+        //Verify
         assertNotNull(result);
         assertEquals(expectedReservation, result);
     }
@@ -94,6 +97,25 @@ public class ReservationServiceImplTest {
 
         Reservation result = reservationService.getReservationById(reservationId);
 
+        //Verify
         assertNull(result);
+    }
+
+    @Test
+    void testCancelReservation() {
+        // Mock reservation for testing
+        Reservation reservation = new Reservation();
+        reservation.setReservationNo("test123");
+
+        // Mock the behavior of repository methods
+        when(reservationRepository.findByReservationNo("test123")).thenReturn(reservation);
+        Mockito.doNothing().when(reservationRepository).delete(reservation);
+
+        // Invoke the method
+        ResponseEntity<String> responseEntity = reservationService.cancelReservation("test123");
+
+        //Verify
+        assertEquals("Reservation test123 has been cancelled", responseEntity.getBody());
+        assertEquals(200, responseEntity.getStatusCodeValue());
     }
 }
