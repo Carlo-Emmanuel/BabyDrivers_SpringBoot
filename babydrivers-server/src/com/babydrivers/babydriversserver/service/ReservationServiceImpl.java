@@ -56,6 +56,8 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.calculateReservationTotal();
 
         return reservationRepository.save(reservation);
+
+        //TODO: still need to check for room availability
     }
 
     //Generate unique reservation number
@@ -63,6 +65,8 @@ public class ReservationServiceImpl implements ReservationService {
     public String generateReservationNo(){
         return UUID.randomUUID().toString().substring(0, 8);
     }
+
+    //TODO:Get all reservations
 
     //Get reservation by id
     @Override
@@ -115,7 +119,4 @@ public class ReservationServiceImpl implements ReservationService {
             return ResponseEntity.notFound().build();
         }
     }
-
-
-
 }

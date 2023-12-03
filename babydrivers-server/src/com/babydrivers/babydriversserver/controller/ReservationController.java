@@ -15,6 +15,9 @@ public class ReservationController {
     @Autowired
     private ReservationServiceImpl reservationService;
 
+    //TODO: add endpoint to get all reservations
+
+
     //POST endpoint to create reservation
     @PostMapping("/create")
     public ResponseEntity<ReservationResponse> createReservation(@RequestBody ReservationRequest request){
