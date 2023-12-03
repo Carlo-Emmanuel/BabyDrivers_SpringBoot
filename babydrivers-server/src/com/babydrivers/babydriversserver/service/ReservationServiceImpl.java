@@ -52,6 +52,9 @@ public class ReservationServiceImpl implements ReservationService {
         Room room = roomService.getRoomById(roomId);
         reservation.setRoom(room);
 
+        //Calculate reservation total
+        reservation.calculateReservationTotal();
+
         return reservationRepository.save(reservation);
     }
 
@@ -75,8 +78,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     //Edit reservation
     @Override
-    public ResponseEntity<Reservation> editReservation(Long reservationId, ReservationRequest request) {
-        Reservation existingReservation = reservationRepository.findById(reservationId).orElse(null);
+    public ResponseEntity<Reservation> editReservation(String reservationNo, ReservationRequest request) {
+        Reservation existingReservation = reservationRepository.findByReservationNo(reservationNo);
 
         if (existingReservation != null) {
             //Update fields based on the request

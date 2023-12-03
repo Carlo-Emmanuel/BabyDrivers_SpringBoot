@@ -20,7 +20,7 @@ public interface ReservationService {
 
     public Reservation getReservationByReservationNo(String reservationNo);
 
-    public ResponseEntity<Reservation> editReservation(Long reservationId, ReservationRequest request);
+    public ResponseEntity<Reservation> editReservation(String reservationNo, ReservationRequest request);
 
     public ResponseEntity<String> cancelReservation(String reservationNo);
 
