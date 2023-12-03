@@ -63,4 +63,5 @@ public class ReservationRequest {
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
+
 }
