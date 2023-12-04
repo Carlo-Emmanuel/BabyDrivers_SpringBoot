@@ -34,7 +34,10 @@ public class Reservation {
     private String reservationNo;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(cascade = CascadeType.ALL) Might be inadvertently deleting rooms
+//    @JoinColumn(name = "room_id", referencedColumnName = "id")
+
+    @OneToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     private Room room;
 

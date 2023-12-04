@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Data
 public class ReservationResponse {
-    private Long id;
+    //private Long id;
     private String firstName;
     private String lastName;
     private LocalDate checkInDate;
@@ -18,7 +18,7 @@ public class ReservationResponse {
 
 
     public ReservationResponse(Reservation reservation) {
-        this.id = reservation.getId();
+        //this.id = reservation.getId();
         this.firstName = reservation.getFirstName();
         this.lastName = reservation.getLastName();
         this.checkInDate = reservation.getCheckInDate();
