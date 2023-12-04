@@ -3,20 +3,34 @@ import { NavBar } from './components/NavBar';
 import HomeBody from './components/HomeBody';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import ImageCarousel from './components/ImageCarousel';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <NavBar></NavBar>
-        <HomeBody></HomeBody>
+   <Router>
+    <div className="App">
+      <NavBar />
+      <div className='content'>
+        <Switch>
+          <Route path='/'>
+          </Route>
+          <Route path = '/ContactPage.jsx'>
+
+          </Route>
+        </Switch>
       </div>
-    </Router>
+    <HomeBody />
+    </div>
+   </Router>
+
+
+// THIS IS THE TRIAL SECTION TO TEST AND SEE COMPONENTS FUNCTIONALITIES BY THEMSELVES
+    // <div>
+    //   <NavBar />
+    //   <HomeBody />
+    // </div>
   );
-        <ImageCarousel />
 }
 
 export default App;
