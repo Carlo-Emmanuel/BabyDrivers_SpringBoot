@@ -1,9 +1,24 @@
 import React from "react";
+import axios from "axios";
 
 const Form = () => {
+  const [firstName, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await axios.post(url, { name: name, email: email });
+      console.log(resp.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <div className="form-container">
-      <form action="" id="reservation-form">
+      <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div class="mb-3">
           <label for="first-name" class="form-label">
             First Name
