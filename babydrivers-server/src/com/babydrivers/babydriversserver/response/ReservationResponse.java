@@ -13,8 +13,10 @@ public class ReservationResponse {
     private String lastName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
+    private String roomType;
     private BigDecimal reservationTotal;
     private String reservationNo;
+
 
 
     public ReservationResponse(Reservation reservation) {
@@ -23,6 +25,7 @@ public class ReservationResponse {
         this.lastName = reservation.getLastName();
         this.checkInDate = reservation.getCheckInDate();
         this.checkOutDate = reservation.getCheckOutDate();
+        this.roomType = reservation.getRoom().getRoomType();
         this.reservationTotal = reservation.getReservationTotal();
         this.reservationNo = reservation.getReservationNo();
     }
