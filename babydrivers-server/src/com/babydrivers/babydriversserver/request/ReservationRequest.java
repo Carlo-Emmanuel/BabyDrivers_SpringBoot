@@ -1,6 +1,9 @@
 package com.babydrivers.babydriversserver.request;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
+@Getter
 public class ReservationRequest {
 
     private String firstName;
@@ -24,40 +27,20 @@ public class ReservationRequest {
         this.roomId = roomId;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public LocalDate getCheckInDate() {
-        return checkInDate;
-    }
-
     public void setCheckInDate(LocalDate checkInDate) {
         this.checkInDate = checkInDate;
     }
 
-    public LocalDate getCheckOutDate() {
-        return checkOutDate;
-    }
-
     public void setCheckOutDate(LocalDate checkOutDate) {
         this.checkOutDate = checkOutDate;
-    }
-
-    public Long getRoomId() {
-        return roomId;
     }
 
     public void setRoomId(Long roomId) {
