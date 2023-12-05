@@ -32,21 +32,11 @@ function App() {
     <Router>
       <div className="App">
         <NavBar></NavBar>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HomeBody></HomeBody>
-              </>
-            }
-          ></Route>
-          <Route path="/reservation" element={<Form></Form>}></Route>
-        </Routes>
+        <HomeBody></HomeBody>
       </div>
     </Router>
   );
-  //<ImageCarousel />;
+        <ImageCarousel />
 }
 
 export default App;
