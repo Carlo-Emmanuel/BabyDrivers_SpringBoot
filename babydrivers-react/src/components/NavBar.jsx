@@ -86,9 +86,9 @@ export const NavBar = () => {
             </Nav.Link>
           </Nav>
           <span className="navbar-text">
-            <button className="vvd" onClick={() => console.log("connect")}>
+            <Link to="/managerr" className="vvd">
               <span>Let's connect</span>
-            </button>
+            </Link>
           </span>
         </Navbar.Collapse>
       </Container>
