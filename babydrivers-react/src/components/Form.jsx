@@ -12,29 +12,29 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "localhost:8080/reservations/create"; // Replace with your actual API endpoint
+      const url = "http://localhost:8080/reservations/create"; 
       const response = await axios.post(url, {
         firstName: firstName,
         lastName: lastName,
-        id: id,
-        checkInDate: checkInDate,
-        checkOutDate: checkOutDate,
+        checkInDate: new Date(checkInDate).toISOString().split('T')[0], //Convert to LocalDate format
+        checkOutDate: new Date(checkOutDate).toISOString().split('T')[0], //Convert to LocalDate format
+        roomId: Number(id),
       });
 
       alert(
-        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nID: ${id}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}`
+        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
       );
 
       console.log(response.data);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting form:", error.responses);
     }
   };
 
   return (
     <div className="form-container">
       <form action="" id="reservation-form" onSubmit={handleSubmit}>
-        <div class="mb-3">
+        <div className="mb-3">
           <label htmlFor="first-name" class="form-label">
             First Name
           </label>
@@ -47,7 +47,7 @@ const Form = () => {
             placeholder="Enter your first name"
           />
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
           <label htmlFor="last-name" class="form-label">
             Last Name
           </label>
@@ -100,7 +100,7 @@ const Form = () => {
             ID
           </label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             value={id}
             id="id"
@@ -108,8 +108,8 @@ const Form = () => {
             placeholder="Enter room ID"
           />
         </div>
-        <div class="mb-3">
-          <label for="user-check-in" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="user-check-in" class="form-label">
             Check In Day
           </label>
           <input
@@ -121,8 +121,8 @@ const Form = () => {
             onChange={(e) => setCheckIn(e.target.value)}
           />
         </div>
-        <div class="mb-3">
-          <label for="user-check-out" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="user-check-out" class="form-label">
             Check Out Day
           </label>
           <input

@@ -12,20 +12,20 @@ function App() {
   //axios testing
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await authFetch.get();
-        setPosts(response.data);
-        console.log(response);
-      } catch (err) {
-        console.log(error.response.data);
-        console.log(err.response.status);
-        console.log(err.reponse.headers);
-      }
-    };
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await authFetch.get();
+  //       setPosts(response.data);
+  //       console.log(response);
+  //     } catch (err) {
+  //       console.log(error.response.data);
+  //       console.log(err.response.status);
+  //       console.log(err.reponse.headers);
+  //     }
+  //   };
+  //   fetchPosts();
+  // }, []);
 
   //rendering
   return (
