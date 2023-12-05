@@ -1,51 +1,111 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Form = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [id, setID] = useState("");
+  const [checkInDate, setCheckIn] = useState("");
+  const [checkOutDate, setCheckOut] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const url = "localhost:8080/reservations/create"; // Replace with your actual API endpoint
+      const response = await axios.post(url, {
+        firstName: firstName,
+        lastName: lastName,
+        id: id,
+        checkInDate: checkInDate,
+        checkOutDate: checkOutDate,
+      });
+
+      alert(
+        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nID: ${id}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}`
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <div className="form-container">
-      <form action="" id="reservation-form">
+      <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div class="mb-3">
-          <label for="first-name" class="form-label">
+          <label htmlFor="first-name" class="form-label">
             First Name
           </label>
           <input
             type="text"
             class="form-control"
+            value={firstName}
             id="first-name"
-            placeholder="Example input placeholder"
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter your first name"
           />
         </div>
         <div class="mb-3">
-          <label for="last-name" class="form-label">
+          <label htmlFor="last-name" class="form-label">
             Last Name
           </label>
           <input
             type="text"
             class="form-control"
+            value={lastName}
             id="last-name"
-            placeholder="Another input placeholder"
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter your last name"
           />
         </div>
-        <div class="mb-3">
-          <label for="user-email" class="form-label">
+        {/* <div class="mb-3">
+          <label htmlFor="user-email" class="form-label">
             Email
           </label>
           <input
             type="email"
             class="form-control"
+            value={email}
             id="user-email"
-            placeholder="Another input placeholder"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
           />
         </div>
         <div class="mb-3">
-          <label for="user-phone" class="form-label">
+          <label htmlFor="user-phone" class="form-label">
             Phone Number
           </label>
           <input
             type="tel"
             class="form-control"
+            value={phoneNumber}
             id="user-phone"
-            placeholder="Another input placeholder"
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Enter your phone"
+          />
+        </div> */}
+        {/*  <div className="mb-3">
+          <label htmlFor=""></label>
+          <select id="cars" name="cars">
+            <option value="singleBed">Single Bed</option>
+            <option value="doubleBed">Double Bed</option>
+            <option value="singleSuite">Single Suite</option>
+            <option value="doubleSuite">Audi</option>
+          </select>
+        </div> */}
+        <div class="mb-3">
+          <label htmlFor="id" class="form-label">
+            ID
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            value={id}
+            id="id"
+            onChange={(e) => setID(e.target.value)}
+            placeholder="Enter room ID"
           />
         </div>
         <div class="mb-3">
@@ -55,8 +115,10 @@ const Form = () => {
           <input
             type="date"
             id="user-check-in"
+            value={checkInDate}
             min="2023-12-01"
             max="2040-12-31"
+            onChange={(e) => setCheckIn(e.target.value)}
           />
         </div>
         <div class="mb-3">
@@ -66,8 +128,10 @@ const Form = () => {
           <input
             type="date"
             id="user-check-out"
+            value={checkOutDate}
             min="2023-12-01"
             max="2040-12-31"
+            onChange={(e) => setCheckOut(e.target.value)}
           />
         </div>
         {/*         
@@ -118,6 +182,9 @@ const Form = () => {
             Create Reservation
           </button>
         </div> */}
+        <button type="submit" id="submit">
+          Create Reservation
+        </button>
       </form>
     </div>
   );
