@@ -19,17 +19,17 @@ public class BabydriversServerApplication {
     @Bean
     CommandLineRunner commandLineRunner(RoomRepository roomRepository) {
         return args -> {
-            roomRepository.save(new Room(1L,"Single Bed",
-                            BigDecimal.valueOf(200), true));
-            roomRepository.save(new Room(2L,"Single Bed",
-                            BigDecimal.valueOf(200), true));
-            roomRepository.save(new Room(3L,"Double Bed",
-                            BigDecimal.valueOf(380), true));
-            roomRepository.save(new Room(4L,"Double Bed",
-                            BigDecimal.valueOf(380), true));
-            roomRepository.save(new Room(5L,"Single Suite",
+//            roomRepository.save(new Room(1L,"Single Bed",
+//                            BigDecimal.valueOf(200), true));
+//            roomRepository.save(new Room(2L,"Single Bed",
+//                            BigDecimal.valueOf(200), true));
+//            roomRepository.save(new Room(3L,"Double Bed",
+//                            BigDecimal.valueOf(380), true));
+//            roomRepository.save(new Room(4L,"Double Bed",
+//                            BigDecimal.valueOf(380), true));
+            roomRepository.save(new Room(10L,"Single Suite",
                             BigDecimal.valueOf(450), true));
-            roomRepository.save(new Room(6L,"Double Suite",
+            roomRepository.save(new Room(11L,"Double Suite",
                             BigDecimal.valueOf(800), true));
         };
     }
