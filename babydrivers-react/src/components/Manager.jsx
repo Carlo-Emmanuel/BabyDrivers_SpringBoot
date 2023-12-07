@@ -32,13 +32,11 @@ const RoomFetchingComponent = () => {
         <div className="rooms">
           {data.map((room) => (
             <div className="room" key={room.id}>
-              <h3>Room ID: {room.name}</h3>
-              <p>Room Type: {room.description}</p>
-              <p>Occupant Name: {room.price}</p>
-              <p>{room.firstName}</p>
-              <p>{room.lastName}</p>
-              <p>{room.checkInDate}</p>
-              <p>{room.checkOutDate}</p>
+              <h3>Room Type: {room.name}</h3>
+              <p>Ocupant Fisrt name: {room.firstName}</p>
+              <p>Ocupent Last name:{room.lastName}</p>
+              <p>Check in {room.checkInDate}</p>
+              <p>Check Out {room.checkOutDate}</p>
             </div>
           ))}
         </div>

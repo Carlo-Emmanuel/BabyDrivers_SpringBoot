@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import RoomFetchingComponent from "./components/Manager";
 import Managerr from "./components/Managerr";
 import PaymentForm from "./components/PaymentForm";
+import EditReservation from "./components/EditReservation";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -25,13 +26,16 @@ function App() {
             element={
               <>
                 <HomeBody></HomeBody>
-                <RoomFetchingComponent></RoomFetchingComponent>
               </>
             }
           ></Route>
           <Route path="/reservation" element={<Form></Form>}></Route>
           <Route path="/managerr" element={<Managerr></Managerr>}></Route>
           <Route path="/payment" element={<PaymentForm></PaymentForm>}></Route>
+          <Route
+            path="/edit"
+            element={<EditReservation></EditReservation>}
+          ></Route>
         </Routes>
       </div>
     </Router>

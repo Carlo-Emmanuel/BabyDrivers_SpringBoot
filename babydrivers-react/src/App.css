@@ -282,6 +282,15 @@ section p {
   flex-direction: column;
   text-align: left;
 }
+
+  #edit{
+    margin-top: 100px;
+    display: flex;
+    width: 150px;
+    height: 70px;
+    align-self:self-start;
+  
+}
 /* Manager view CSS */
 
 .rooms{
@@ -295,4 +304,33 @@ section p {
 }
 
 
-/* */
+/* EditReservation */
+
+#search-reservation {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+}
+
+#search-reservation div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center; 
+}
+
+#confirm-search {
+  padding: 8px;
+  width: 200px; 
+  text-align: center; 
+}
+
+#submit-code {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.modal{
+  display: block;
+}
