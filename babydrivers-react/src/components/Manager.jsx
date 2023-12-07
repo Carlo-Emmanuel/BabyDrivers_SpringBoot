@@ -6,7 +6,7 @@ const RoomFetchingComponent = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const url = "https://course-api.com/react-store-products";
+  const url = "https://localhost:8080/reservations/db2b103e";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +24,11 @@ const RoomFetchingComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className="manager-container"> 
+    <div className="manager-header">
+    <h1>MANAGER VIEW</h1>
+    <i class="fa-solid fa-user-tie"></i>
+    </div>
       <h1>Booked Rooms</h1>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}

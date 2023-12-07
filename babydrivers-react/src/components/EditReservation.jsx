@@ -29,8 +29,7 @@ const EditReservation = () => {
       setModalVisibility(false);
     } catch (error) {
       console.error("Error updating reservation:", error);
-      // Assuming you want to navigate to "/payment" in case of an error
-      navigateTo("/payment");
+      console.log(error.response)
     }
   };
 
@@ -89,7 +88,7 @@ const EditReservation = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <div className="form-container">
+                <div className="edit-form-container">
                   <form action="" id="reservation-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
                       <label htmlFor="first-name" className="form-label">
@@ -157,16 +156,14 @@ const EditReservation = () => {
                       />
                     </div>
 
-                    <button type="submit" id="submit">
-                      Save Changes
-                    </button>
+                
                   </form>
                 </div>
               </div>
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn btn-secondary btn-modal-close"
                   data-bs-dismiss="modal"
                   onClick={closeModal}
                 >
@@ -174,7 +171,7 @@ const EditReservation = () => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-modal-submit"
                   onClick={handleSubmit}
                 >
                   Save changes
