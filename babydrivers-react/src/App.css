@@ -259,6 +259,11 @@ section p {
   margin: 0 auto;
   max-width: 50%;
 }
+.description{
+  display: flex;
+  flex-direction: column;
+  gap :10px
+}
 
 /* form css */
 
@@ -284,14 +289,22 @@ section p {
 }
 
   #edit{
+    position: absolute;
     margin-top: 100px;
-    display: flex;
+    left: 100px;
     width: 150px;
     height: 70px;
-    align-self:self-start;
-  
+  border: 1px solid white
 }
 /* Manager view CSS */
+
+.manager-container{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center ;
+}
 
 .rooms{
   display: flex;
@@ -303,14 +316,28 @@ section p {
 
 }
 
+.manager-header{
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+  gap: 20px;
+
+}
+
+.fa-user-tie{
+  margin-top: 10px;;
+  font-size: 30px;
+}
+
 
 /* EditReservation */
 
 #search-reservation {
+  width: 100vw;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  height: 100vh; 
+  flex-direction: column;
+  align-items: center;
+  justify-content:center ;
 }
 
 #search-reservation div {
@@ -330,7 +357,37 @@ section p {
   padding: 8px;
   cursor: pointer;
 }
+.modal-dialog{
+  width: 800px;
+}
 
 .modal{
-  display: block;
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
+.modal-body form{
+}
+
+.modal-content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between ;
+
+}
+
+.btn-modal-close{
+  width: 40%
+}
+
+.btn-modal-submit{
+  width: 40%;
 }
