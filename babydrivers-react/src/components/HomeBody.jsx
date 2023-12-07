@@ -1,6 +1,7 @@
 import React from "react";
 import hotel1 from "../assets/img/pexels-kelly-2869215.jpg";
 import hotel2 from "../assets/img/pexels-pew-nguyen-244133.jpg";
+import ImageCarousel from './ImageCarousel';
 
 function HomeBody() {
   return (
@@ -20,6 +21,7 @@ function HomeBody() {
       </section>
       <section className="staff"></section>
       <section className="amenities"></section>
+      <ImageCarousel />
     </div>
   );
 }

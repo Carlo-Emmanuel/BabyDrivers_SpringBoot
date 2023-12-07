@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -9,16 +10,20 @@ const Form = () => {
   const [checkInDate, setCheckIn] = useState("");
   const [checkOutDate, setCheckOut] = useState("");
 
+  const navigateTo = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/reservations/create"; 
+      const url = "http://localhost:8080/reservations/create";
       const response = await axios.post(url, {
         firstName: firstName,
         lastName: lastName,
-        checkInDate: new Date(checkInDate).toISOString().split('T')[0], //Convert to LocalDate format
-        checkOutDate: new Date(checkOutDate).toISOString().split('T')[0], //Convert to LocalDate format
+        // convert Dates from String to localDate
+        checkInDate: new Date(checkInDate).toISOString().split("T")[0],
+        checkOutDate: new Date(checkOutDate).toISOString().split("T")[0],
         roomId: Number(id),
+        z,
       });
 
       alert(
@@ -26,13 +31,18 @@ const Form = () => {
       );
 
       console.log(response.data);
+      ("/payment");
     } catch (error) {
       console.error("Error submitting form:", error.responses);
+      navigateTo("/payment");
     }
   };
 
   return (
     <div className="form-container">
+      <button id="edit" onClick={() => navigateTo("/edit")}>
+        Edit Reservation
+      </button>
       <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="first-name" class="form-label">
@@ -134,54 +144,7 @@ const Form = () => {
             onChange={(e) => setCheckOut(e.target.value)}
           />
         </div>
-        {/*         
-        <div class="form-part">
-          <label htmlFor="firstName">First Name:</label>
-          <input type="text" id="firstName" name="" required />
-        </div>
-        <div class="form-part">
-          <label htmlFor="lastName">Last Name:</label>
-          <input type="text" id="lastName" name="" required />
-        </div>
 
-        <div class="form-part">
-          <label htmlFor="userEmail">Email:</label>
-          <input type="email" id="userEmail" name="" required />
-        </div>
-        <div class="form-part">
-          <label htmlFor="userPhone">Phone Number:</label>
-          <input
-            type="tel"
-            id="userPhone"
-            name=""
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required
-          />
-        </div>
-
-        <div class="form-part">
-          <label htmlFor="start"> Check in date:</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
-        </div>
-        <div class="form-part">
-          <label htmlFor="start"> Check out date:</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
-          <button type="submit" id="submit">
-            Create Reservation
-          </button>
-        </div> */}
         <button type="submit" id="submit">
           Create Reservation
         </button>
