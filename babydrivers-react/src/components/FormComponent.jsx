@@ -1,48 +1,8 @@
 import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Form = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [id, setID] = useState("");
-  const [checkInDate, setCheckIn] = useState("");
-  const [checkOutDate, setCheckOut] = useState("");
-
-  const navigateTo = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const url = "http://localhost:8080/reservations/create";
-      const response = await axios.post(url, {
-        firstName: firstName,
-        lastName: lastName,
-        // convert Dates from String to localDate
-        checkInDate: new Date(checkInDate).toISOString().split("T")[0],
-        checkOutDate: new Date(checkOutDate).toISOString().split("T")[0],
-        roomId: Number(id),
-        z,
-      });
-
-      alert(
-        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
-      );
-
-      console.log(response.data);
-      ("/payment");
-    } catch (error) {
-      console.error("Error submitting form:", error.responses);
-      navigateTo("/payment");
-    }
-  };
-
+const FormComponent = () => {
   return (
-    <div className="form-container">
-      <button id="edit" onClick={() => navigateTo("/edit")}>
-        Edit Reservation
-      </button>
+    <div>
       <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="first-name" class="form-label">
@@ -153,4 +113,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default FormComponent;
