@@ -3,7 +3,7 @@ import HomeBody from "./components/HomeBody";
 import Form from "./components/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import ImageCarousel from "./components/ImageCarousel";
+//import ImageCarousel from "./components/ImageCarousel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authFetch from "./axios/posts";
 import { useEffect, useState } from "react";
@@ -20,11 +20,27 @@ function App() {
     <Router>
       <div className="App">
         <NavBar></NavBar>
-        <HomeBody></HomeBody>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HomeBody></HomeBody>
+              </>
+            }
+          ></Route>
+          <Route path="/reservation" element={<Form></Form>}></Route>
+          <Route path="/managerr" element={<Managerr></Managerr>}></Route>
+          <Route path="/payment" element={<PaymentForm></PaymentForm>}></Route>
+          <Route
+            path="/edit"
+            element={<EditReservation></EditReservation>}
+          ></Route>
+        </Routes>
       </div>
     </Router>
   );
-        <ImageCarousel />
+  //<ImageCarousel />;
 }
 
 export default App;
