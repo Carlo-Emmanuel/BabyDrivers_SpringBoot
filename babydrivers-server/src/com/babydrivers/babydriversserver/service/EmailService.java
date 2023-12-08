@@ -17,7 +17,7 @@ public class EmailService {
     public void sendReservationConfirmation(String email, Reservation reservation) {
         SimpleMailMessage message = new SimpleMailMessage();
         ReservationResponse reservationResponse = new ReservationResponse(reservation);
-        message.setSubject("Reservation Confirmation");
+        message.setSubject("Booking Confirmation: " + reservationResponse.getReservationNo());
         message.setTo(email);
         message.setText(reservationResponse.toFormattedString());
 

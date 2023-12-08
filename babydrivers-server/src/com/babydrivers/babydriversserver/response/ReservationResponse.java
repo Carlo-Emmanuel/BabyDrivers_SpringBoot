@@ -45,7 +45,7 @@ public class ReservationResponse {
     //New version of toFormattedString() that is more readable
     public String toFormattedString() {
         return String.format("Dear Guest,\n\n" +
-                        "We are happy to announce that your reservation in our hotel is confirmed!\n\n" +
+                        "We are happy to announce that your reservation is confirmed!\n\n" +
                         "Below are the complete details of your booking:\n\n" +
                         "*Booking details*\n" +
                         "Booking Number: %s\n" +
