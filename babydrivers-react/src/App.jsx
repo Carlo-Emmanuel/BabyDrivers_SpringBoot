@@ -3,10 +3,11 @@ import HomeBody from "./components/HomeBody";
 import Form from "./components/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-//import ImageCarousel from "./components/ImageCarousel";
+import ImageCarousel from "./components/ImageCarousel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authFetch from "./axios/posts";
 import { useEffect, useState } from "react";
+import PaymentForm from "./components/PaymentForm";
 
 function App() {
   //axios testing
@@ -32,11 +33,24 @@ function App() {
     <Router>
       <div className="App">
         <NavBar></NavBar>
-        <HomeBody></HomeBody>
+        <Routes>
+          <Route
+          path="/"
+          element = {
+            <>
+            <HomeBody />
+            <ImageCarousel />
+            <PaymentForm />
+            </>
+          }></Route>
+          <Route 
+          path="/reservation"
+          element = {<Form />
+          }></Route>
+        </Routes>
       </div>
     </Router>
   );
-        <ImageCarousel />
 }
 
 export default App;
