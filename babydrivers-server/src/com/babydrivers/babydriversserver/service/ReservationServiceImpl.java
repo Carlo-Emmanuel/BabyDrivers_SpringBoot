@@ -4,11 +4,13 @@ import com.babydrivers.babydriversserver.entity.Reservation;
 import com.babydrivers.babydriversserver.entity.Room;
 import com.babydrivers.babydriversserver.repository.ReservationRepository;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
+import com.babydrivers.babydriversserver.response.ReservationResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -118,5 +120,11 @@ public class ReservationServiceImpl implements ReservationService {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    //Get all reservations
+    @Override
+    public List<Reservation> getAllReservations(){
+        return reservationRepository.findAll();
     }
 }

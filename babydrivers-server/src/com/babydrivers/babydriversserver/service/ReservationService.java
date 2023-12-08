@@ -5,6 +5,7 @@ import com.babydrivers.babydriversserver.request.ReservationRequest;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface ReservationService {
 
@@ -23,5 +24,7 @@ public interface ReservationService {
     public ResponseEntity<Reservation> editReservation(String reservationNo, ReservationRequest request);
 
     public ResponseEntity<String> cancelReservation(String reservationNo);
+
+    public List<Reservation> getAllReservations();
 
 }

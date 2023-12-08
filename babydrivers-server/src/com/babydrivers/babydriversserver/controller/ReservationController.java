@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
+
 @RestController
 @RequestMapping("/reservations")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -78,6 +83,20 @@ public class ReservationController {
 
             //Trying out inline return statement suggested by IntelliJ
 //            return reservationService.cancelReservation(reservationNo);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    //GET endpoint to get all reservations
+    @GetMapping("/all")
+    public ResponseEntity<List<ReservationResponse>> getAllReservations(){
+        try{
+            List<ReservationResponse> response = reservationService.getAllReservations()
+                                        .stream()
+                                        .map(ReservationResponse::new)
+                                        .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
