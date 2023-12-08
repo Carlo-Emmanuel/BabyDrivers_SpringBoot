@@ -1,41 +1,31 @@
-/* import React from 'react'
-import h1_img from "../assets/images/pexels-asad-photo-maldives-1268871.jpg"
-import h2_img from "../assets/images/pexels-asad-photo-maldives-3155696.jpg"
-import h3_img from "../assets/images/pexels-pixabay-38238.jpg"
+import React, {useState} from 'react'
+import {BsArrowLeft, BsArrowRight, BsPersonX} from 'react-icons/bs'
 
 
-const ImageCarousel = () => {
+
+const ImageCarousel = ({data}) => {
+  const [slide, setSlide] = useState(0);
+
+  const nextSlide = () => {
+    setSlide(slide === data.length - 1 ? 0 : slide+1);
+  };
+
+  const prevSlide = () => {
+    setSlide(slide === 0 ? data.length - 1 : slide-1);
+  };
+
   return (
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src={h1_img} class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src={h2_img} class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src={h3_img} class="d-block w-100" alt="..." />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    <div className="carousel-slide">
+      <BsArrowLeft className='arrow arrow-left' onClick={prevSlide} />
+      {data.map((item,index) => {
+        return <img src ={item.src} alt = {item.alt} key={index} className={slide == index ? "slide" : "slide-hidden"} />
+      })}
+      <BsArrowRight className='arrow arrow-right' onClick={nextSlide} />
+      <span className='indicators'>
+        {data.map((_, index) => {
+          return <button key={index} onClick={null} className='indicator'></button>
+        })}
+      </span>
     </div>
   );
 };

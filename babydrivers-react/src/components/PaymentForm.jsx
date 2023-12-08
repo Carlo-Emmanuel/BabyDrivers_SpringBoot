@@ -21,6 +21,14 @@ const PaymentForm = () => {
     }
   };
 
+/* 
+Cardnumber = int
+CVV = int
+expiry date = date
+first name = text
+last name = text
+ */
+
   return (
     <div className="payment-container">
       <form action="" id="payment-form" onSubmit={handleSubmit}>
@@ -33,6 +41,7 @@ const PaymentForm = () => {
             class="form-control"
             id="first-name"
             placeholder="John"
+            required
           />
         </div>
         <div class="pay">
@@ -44,6 +53,7 @@ const PaymentForm = () => {
             class="form-control"
             id="last-name"
             placeholder="Doe"
+            required
           />
         </div>
         <div class="pay">
@@ -54,7 +64,8 @@ const PaymentForm = () => {
             type="email"
             class="form-control"
             id="user-email"
-            placeholder="Another input placeholder"
+            placeholder="johndoe123@gmail.com"
+            required
           />
         </div>
         <div class="mb-3">
@@ -65,79 +76,17 @@ const PaymentForm = () => {
             type="tel"
             class="form-control"
             id="user-phone"
-            placeholder="Another input placeholder"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="user-check-in" class="form-label">
-            Check In Day
-          </label>
-          <input
-            type="date"
-            id="user-check-in"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="user-check-out" class="form-label">
-            Check Out Day
-          </label>
-          <input
-            type="date"
-            id="user-check-out"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
-        </div>
-        {/*         
-        <div class="form-part">
-          <label htmlFor="firstName">First Name:</label>
-          <input type="text" id="firstName" name="" required />
-        </div>
-        <div class="form-part">
-          <label htmlFor="lastName">Last Name:</label>
-          <input type="text" id="lastName" name="" required />
-        </div>
-
-        <div class="form-part">
-          <label htmlFor="userEmail">Email:</label>
-          <input type="email" id="userEmail" name="" required />
-        </div>
-        <div class="form-part">
-          <label htmlFor="userPhone">Phone Number:</label>
-          <input
-            type="tel"
-            id="userPhone"
-            name=""
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="818"
             required
+            maxLength={11}
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           />
         </div>
-
-        <div class="form-part">
-          <label htmlFor="start"> Check in date:</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
-        </div>
-        <div class="form-part">
-          <label htmlFor="start"> Check out date:</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            min="2023-12-01"
-            max="2040-12-31"
-          />
+        <div class= "pay">
           <button type="submit" id="submit">
-            Create Reservation
+            Submit Payment
           </button>
-        </div> */}
+        </div>
       </form>
     </div>
   );
