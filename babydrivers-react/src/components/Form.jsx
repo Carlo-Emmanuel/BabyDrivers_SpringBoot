@@ -40,9 +40,6 @@ const Form = () => {
 
   return (
     <div className="form-container">
-      <button id="edit" onClick={() => navigateTo("/edit")}>
-        Edit Reservation
-      </button>
       <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="first-name" class="form-label">
@@ -144,10 +141,14 @@ const Form = () => {
             onChange={(e) => setCheckOut(e.target.value)}
           />
         </div>
-
-        <button type="submit" id="submit">
-          Create Reservation
-        </button>
+        <div className="button-container">
+          <button type="submit" id="submit">
+            Create Reservation
+          </button>
+          <button id="edit" onClick={() => navigateTo("/edit")}>
+            Edit Reservation
+          </button>
+        </div>
       </form>
     </div>
   );
