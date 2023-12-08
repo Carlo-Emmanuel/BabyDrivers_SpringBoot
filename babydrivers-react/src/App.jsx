@@ -7,50 +7,24 @@ import ImageCarousel from "./components/ImageCarousel";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authFetch from "./axios/posts";
 import { useEffect, useState } from "react";
+import RoomFetchingComponent from "./components/Manager";
+import Managerr from "./components/Managerr";
 import PaymentForm from "./components/PaymentForm";
+import EditReservation from "./components/EditReservation";
 
 function App() {
-  //axios testing
   const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await authFetch.get();
-        setPosts(response.data);
-        console.log(response);
-      } catch (err) {
-        console.log(error.response.data);
-        console.log(err.response.status);
-        console.log(err.reponse.headers);
-      }
-    };
-    fetchPosts();
-  }, []);
 
   //rendering
   return (
     <Router>
       <div className="App">
         <NavBar></NavBar>
-        <Routes>
-          <Route
-          path="/"
-          element = {
-            <>
-            <HomeBody />
-            <ImageCarousel />
-            <PaymentForm />
-            </>
-          }></Route>
-          <Route 
-          path="/reservation"
-          element = {<Form />
-          }></Route>
-        </Routes>
+        <HomeBody></HomeBody>
       </div>
     </Router>
   );
+        <ImageCarousel />
 }
 
 export default App;
