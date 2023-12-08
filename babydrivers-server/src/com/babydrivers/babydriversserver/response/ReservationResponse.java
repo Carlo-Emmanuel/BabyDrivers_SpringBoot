@@ -29,4 +29,16 @@ public class ReservationResponse {
         this.reservationTotal = reservation.getReservationTotal();
         this.reservationNo = reservation.getReservationNo();
     }
+
+    //Formats reservation details into a string for confirmation email
+    public String toFormattedString() {
+        return String.format("Reservation Details:\n\n" +
+                        "Name: %s %s\n" +
+                        "Check-In Date: %s\n" +
+                        "Check-Out Date: %s\n" +
+                        "Room Type: %s\n" +
+                        "Total: %s\n" +
+                        "Reservation Number: %s",
+                        firstName, lastName, checkInDate, checkOutDate, roomType, reservationTotal, reservationNo);
+    }
 }

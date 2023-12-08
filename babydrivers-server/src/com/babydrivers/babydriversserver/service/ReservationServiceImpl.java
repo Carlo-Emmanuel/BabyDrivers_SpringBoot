@@ -20,6 +20,9 @@ public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
     private final RoomService roomService;
 
+    @Autowired
+    private EmailService emailService;
+
     //Not sure if we'll need this
 //    @Autowired
 //    public ReservationServiceImpl(ReservationRepository reservationRepository) {
@@ -56,6 +59,8 @@ public class ReservationServiceImpl implements ReservationService {
 
         //Calculate reservation total
         reservation.calculateReservationTotal();
+
+        emailService.sendReservationConfirmation("kennydampresentations@gmail.com", reservation);
 
         return reservationRepository.save(reservation);
 
