@@ -21,9 +21,6 @@ public class ReservationController {
     @Autowired
     private ReservationServiceImpl reservationService;
 
-    //TODO: add endpoint to get all reservations
-
-
     //POST endpoint to create reservation
     @PostMapping("/create")
     public ResponseEntity<ReservationResponse> createReservation(@RequestBody ReservationRequest request){
@@ -59,6 +56,20 @@ public class ReservationController {
         }
     }
 
+    //GET endpoint to get all reservations
+    @GetMapping("/all")
+    public ResponseEntity<List<ReservationResponse>> getAllReservations(){
+        try{
+            List<ReservationResponse> response = reservationService.getAllReservations()
+                    .stream()
+                    .map(ReservationResponse::new)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     //PUT endpoint to edit reservation
     @PutMapping("/{reservationNo}")
     public ResponseEntity<Reservation> editReservation(@PathVariable String reservationNo, @RequestBody ReservationRequest request){
@@ -88,17 +99,4 @@ public class ReservationController {
         }
     }
 
-    //GET endpoint to get all reservations
-    @GetMapping("/all")
-    public ResponseEntity<List<ReservationResponse>> getAllReservations(){
-        try{
-            List<ReservationResponse> response = reservationService.getAllReservations()
-                                        .stream()
-                                        .map(ReservationResponse::new)
-                                        .collect(Collectors.toList());
-            return ResponseEntity.ok(response);
-        } catch(Exception e){
-            return ResponseEntity.badRequest().build();
-        }
-    }
 }

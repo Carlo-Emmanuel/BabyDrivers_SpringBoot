@@ -73,8 +73,6 @@ public class ReservationServiceImpl implements ReservationService {
         return UUID.randomUUID().toString().substring(0, 8);
     }
 
-    //TODO:Get all reservations
-
     //Get reservation by id
     @Override
     public Reservation getReservationById(Long reservationId){
@@ -85,6 +83,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation getReservationByReservationNo(String reservationNo){
         return reservationRepository.findByReservationNo(reservationNo);
+    }
+
+    //Get all reservations
+    @Override
+    public List<Reservation> getAllReservations(){
+        return reservationRepository.findAll();
     }
 
     //Edit reservation
@@ -127,9 +131,4 @@ public class ReservationServiceImpl implements ReservationService {
         }
     }
 
-    //Get all reservations
-    @Override
-    public List<Reservation> getAllReservations(){
-        return reservationRepository.findAll();
-    }
 }
