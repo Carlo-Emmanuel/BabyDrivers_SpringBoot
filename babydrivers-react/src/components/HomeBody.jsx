@@ -14,8 +14,8 @@ function HomeBody() {
           turpis.
         </p>
         <div className="main-photos">
-          <img src={hotel1} id="hotel-photo1" class="main-body-photo" alt="" />
-          <img src={hotel2} class="main-body-photo" alt="" />
+          <img src={hotel1} id="hotel-photo1" className="main-body-photo" alt="" />
+          <img src={hotel2} className="main-body-photo" alt="" />
         </div>
       </section>
       <section className="staff"></section>

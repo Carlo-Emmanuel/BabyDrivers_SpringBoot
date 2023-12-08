@@ -228,6 +228,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: center;
   flex-direction: column;
   padding-top: 100px;
+  position: absolute;
 }
 
 .section-head{
@@ -390,4 +391,48 @@ section p {
 
 .btn-modal-submit{
   width: 40%;
+}
+
+/************ Carousel css ************/
+.carousel-slide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+  max-height: 25%;
+}
+
+.images {
+  width: 600px;
+  height: 400px;
+}
+
+.slide {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 50%;
+}
+
+.slide-hidden {
+  display:none;
+}
+
+.arrow {
+  position:absolute;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.arrow:hover {
+  cursor:pointer;
+}
+
+.arrow-left {
+  left: 1 rem;
+}
+
+.arrow-right {
+  right: 1rem;
 }
