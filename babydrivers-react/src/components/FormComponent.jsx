@@ -1,8 +1,15 @@
 import React from "react";
+import { useState } from "react";
 
 const FormComponent = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [id, setID] = useState("");
+  const [checkInDate, setCheckIn] = useState("");
+  const [checkOutDate, setCheckOut] = useState("");
+
   return (
-    <div>
+    <div className="form-container">
       <form action="" id="reservation-form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="first-name" class="form-label">

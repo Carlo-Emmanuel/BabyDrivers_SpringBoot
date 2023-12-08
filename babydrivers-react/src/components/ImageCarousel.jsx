@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {BsArrowLeft, BsArrowRight, BsPersonX} from 'react-icons/bs'
 
 
+
 const ImageCarousel = ({data}) => {
   const [slide, setSlide] = useState(0);
 
@@ -30,3 +31,4 @@ const ImageCarousel = ({data}) => {
 };
 
 export default ImageCarousel;
+ */
