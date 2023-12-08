@@ -1,13 +1,14 @@
 import React from "react";
 import hotel1 from "../assets/img/pexels-kelly-2869215.jpg";
 import hotel2 from "../assets/img/pexels-pew-nguyen-244133.jpg";
-import ImageCarousel from './ImageCarousel';
+import ImageCarousel from "./ImageCarousel";
 
 function HomeBody() {
   return (
     <div className="body-container">
       <section className="description">
-        <h1 className="section-head">What we are all about.</h1>
+        <h1>Welcome to Hotel California</h1>
+        <h2 className="section-head">What we are all about.</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus

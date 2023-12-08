@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import h1_img from "../assets/images/pexels-asad-photo-maldives-1268871.jpg"
 import h2_img from "../assets/images/pexels-asad-photo-maldives-3155696.jpg"
 import h3_img from "../assets/images/pexels-pixabay-38238.jpg"
@@ -41,3 +41,4 @@ const ImageCarousel = () => {
 };
 
 export default ImageCarousel;
+ */
