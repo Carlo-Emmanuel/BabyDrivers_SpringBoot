@@ -110,18 +110,6 @@ const PaymentForm = () => {
             id="userPhone"
             name=""
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required
-          />
-        </div>
-
-        <div class="form-part">
-          <label htmlFor="start"> Check in date:</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            min="2023-12-01"
-            max="2040-12-31"
           />
         </div>
         <div class="form-part">
