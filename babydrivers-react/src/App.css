@@ -82,7 +82,13 @@ nav.navbar {
   top: 0;
   z-index: 9999;
   transition:  0.32s ease-in-out;
+  background-color: #121212;
 }
+
+.me-auto{
+  gap:10px;
+}
+
 nav.navbar.scrolled {
   padding: 0px 0;
   background-color: #121212;
@@ -90,26 +96,14 @@ nav.navbar.scrolled {
 nav.navbar a.navbar-brand {
     width: 9%;
 }
-nav.navbar .navbar-nav .nav-link.navbar-link {
-  font-weight: 400;
-  color: #fff !important;
-  letter-spacing: 0.8px;
-  padding: 0 25px;
-  font-size: 18px;
-  opacity: 0.75;
-}
- .navbar-link{
-    font-weight: 400;
-    color: #fff !important;
-    letter-spacing: 0.8px;
-    padding: 0 25px;
-    font-size: 18px;
-    opacity: 0.75;
-  
+
+
+ .navbar-link:hover{
+  color: white !important;
+  opacity: 1;
  }
 
- nav.navbar .navbar-nav a.nav-link.navbar-link,
- span.navbar-text button {
+.navbar-link{
    font-weight: 400;
    color: #fff !important;
    letter-spacing: 0.8px;
@@ -118,8 +112,8 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
    opacity: 0.75;
    text-decoration: none; 
    display: inline-block; 
-   border: 1px solid white; 
-   cursor: pointer; 
+   cursor: pointer;
+   gap: 10px;
  }
 
  .navbar-text{
@@ -131,11 +125,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   color: white;
  }
  
- nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
- nav.navbar .navbar-nav a.nav-link.navbar-link.active,
- span.navbar-text button:hover {
-   opacity: 1;
- }
+
  
 span.navbar-text {
     display: flex;
@@ -221,6 +211,46 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
+#hotel-name{
+  color: white;
+}
+
+.brand{
+  display: flex;
+  flex-direction: row;
+  }
+ 
+  .nav-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+  
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
 /* HomeBody */
 
 .body-container{
@@ -228,6 +258,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: center;
   flex-direction: column;
   padding-top: 100px;
+ 
+
 }
 
 .section-head{
@@ -235,35 +267,49 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-decoration: underline;
 }
 
-.main-body-photo{
-  height: 200px;
-  width: 400px;
-  gap: 20px;
-  
-}
 
-#hotel-photo1{
-  height: 200px;
-  width: 400px;
 
-}
 
 .main-photos{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  background-color: #121212;
 }
 
 section p {
   text-align: center;
-  margin: 0 auto;
-  max-width: 50%;
+  margin: 0;
+  line-height: 28px;
+  max-width: 25%;
+  margin-bottom: 40px;
 }
-.description{
+.section-container{
   display: flex;
   flex-direction: column;
   gap :10px
 }
+
+.info-container{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0px;
+}
+
+.header-photo-container{
+  width: 100vw;
+  height: 600px;
+  margin-bottom: 30px;
+}
+
+#head-photo{
+  width: 100vw;
+  height: 600px;
+}
+
+
 
 /* form css */
 
@@ -289,12 +335,21 @@ section p {
 }
 
   #edit{
-    position: absolute;
-    margin-top: 100px;
-    left: 100px;
-    width: 150px;
+    width: 50%;
     height: 70px;
   border: 1px solid white
+}
+
+.button-container{
+  display: flex;
+  gap: 10px;
+}
+
+#submit{
+  width: 50%;
+  border: 1px solid white;
+
+  
 }
 /* Manager view CSS */
 
@@ -312,9 +367,6 @@ section p {
   gap: 10px;
 }
 
-.room{
-
-}
 
 .manager-header{
   display: flex;
@@ -329,6 +381,21 @@ section p {
   font-size: 30px;
 }
 
+/* Payment from css */
+
+.payment-container{
+  margin-top: 200px;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+}
+
+.payment-button-container{
+  display: flex;
+  justify-content: center;
+}
+
 
 /* EditReservation */
 
@@ -338,6 +405,10 @@ section p {
   flex-direction: column;
   align-items: center;
   justify-content:center ;
+}
+
+.modal label{
+  color: black;
 }
 
 #search-reservation div {
@@ -390,4 +461,79 @@ section p {
 
 .btn-modal-submit{
   width: 40%;
+}
+
+/************ Carousel css ************/
+.carousel-slide {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30%;
+  max-width: 80%;
+  max-height: 25%;
+}
+
+.images {
+  width: 600px;
+  height: 400px;
+  transition: transform 0.5s ease; /* Add a transition for smooth sliding */
+
+}
+
+.slide {
+  border-radius: 0.5rem;
+  width: 100%; /* Set the desired width */
+  height: 300px; /* Set the desired height */
+}
+
+.slide-hidden {
+  display:none;
+}
+
+
+.arrow:hover {
+  cursor:pointer;
+}
+
+
+
+.indicators {
+  position: absolute;
+  bottom: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.indicator {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border: 1px solid white;
+  cursor: pointer;
+
+}
+
+.indicator.active {
+  background-color: #0087ca; /* Change this color to your preferred active indicator color */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 10px; /* Adjust this value as needed */
+}
+
+.arrow-right {
+  right: 10px; /* Adjust this value as needed */
 }

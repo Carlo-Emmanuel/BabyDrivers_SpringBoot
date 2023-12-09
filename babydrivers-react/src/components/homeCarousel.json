@@ -1,0 +1,26 @@
+{
+    "slides": [
+        {
+            "src": "./src/assets/images/pexels-asad-photo-maldives-1268871.jpg",
+            "alt": "image 1 for home carousel"
+        },
+        {
+            "src": "./src/assets/images/pexels-asad-photo-maldives-3155696.jpg",
+            "alt": "image 2 for home carousel"
+        },
+        {
+            "src": "./src/assets/images/pexels-pixabay-38238.jpg",
+            "alt": "image 3 for home carousel"
+        },
+        {
+            "src": "./src/assets/images/pexels-the-lazy-artist-gallery-1488515.jpg",
+            "alt": "image 4 for home carousel"
+        },
+        {
+            "src": "./src/assets/images/pexels-vincent-gerbouin-1174732.jpg",
+            "alt": "image 5 for home carousel"
+        }
+    ]
+    
+}
+

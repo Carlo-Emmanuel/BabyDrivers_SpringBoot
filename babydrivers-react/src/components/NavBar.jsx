@@ -1,4 +1,3 @@
-import { NavDropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/img/hotel-svgrepo-com.svg";
@@ -11,54 +10,26 @@ import {
 } from "react-router-dom";
 
 export const NavBar = () => {
-  const [activeLink, setActiveLink] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
-
   return (
-    <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
-      <Container>
-        <Navbar.Brand href="#home">
+    <Navbar expand="lg" className="navbar">
+      <Container className="nav-container">
+        <div className="brand">
           <img src={logo} className="logo" alt="logo"></img>
-        </Navbar.Brand>
+          <h1 className="" id="hotel-name">
+            Hotel California
+          </h1>
+        </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink
-              to="/"
-              className={
-                activeLink === "home" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("home")}
-            >
+            <NavLink to="/" className={"navbar-link hover-underline-animation"}>
               Home
             </NavLink>
             <NavLink
               to="reservation"
-              className={
-                activeLink === "reservation"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("reservation")}
+              className={"navbar-link hover-underline-animation"}
             >
               Reservation
             </NavLink>
@@ -77,10 +48,7 @@ export const NavBar = () => {
 
             <Nav.Link
               href="#contact"
-              className={
-                activeLink === "contact" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("projects")}
+              className={"navbar-link hover-underline-animation"}
             >
               Contact
             </Nav.Link>

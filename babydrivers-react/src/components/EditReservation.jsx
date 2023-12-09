@@ -14,6 +14,7 @@ const EditReservation = () => {
 
   const navigateTo = useNavigate();
 
+  // put request
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -29,10 +30,11 @@ const EditReservation = () => {
       setModalVisibility(false);
     } catch (error) {
       console.error("Error updating reservation:", error);
-      console.log(error.response)
+      console.log(error.response);
     }
   };
 
+  //get request to fill the form with the user's data
   const handleSearch = async (e) => {
     e.preventDefault();
 
@@ -53,6 +55,7 @@ const EditReservation = () => {
     }
   };
 
+  //makes modal invisible
   const closeModal = () => {
     setModalVisibility(false);
   };
@@ -155,8 +158,6 @@ const EditReservation = () => {
                         onChange={(e) => setCheckOut(e.target.value)}
                       />
                     </div>
-
-                
                   </form>
                 </div>
               </div>
