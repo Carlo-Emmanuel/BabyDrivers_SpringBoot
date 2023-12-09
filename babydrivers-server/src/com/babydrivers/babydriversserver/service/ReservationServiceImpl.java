@@ -43,6 +43,11 @@ public class ReservationServiceImpl implements ReservationService {
                                      LocalDate checkInDate,
                                      LocalDate checkOutDate,
                                      Long roomId){
+        //Check if room is available
+        if (!isRoomAvailable(roomId, checkInDate, checkOutDate)) {
+            throw new RuntimeException("Room not available for the specified dates");
+        }
+
         Reservation reservation = new Reservation();
         reservation.setFirstName(firstName);
         reservation.setLastName(lastName);
@@ -60,11 +65,10 @@ public class ReservationServiceImpl implements ReservationService {
         //Calculate reservation total
         reservation.calculateReservationTotal();
 
+        //Send confirmation email
         emailService.sendReservationConfirmation("kennydampresentations@gmail.com", reservation);
 
         return reservationRepository.save(reservation);
-
-        //TODO: still need to check for room availability
     }
 
     //Generate unique reservation number
@@ -110,6 +114,8 @@ public class ReservationServiceImpl implements ReservationService {
             //Save the updated reservation
             Reservation updatedReservation = reservationRepository.save(existingReservation);
 
+            //Send confirmation email
+            emailService.sendReservationEditConfirmation("kennydampresentations@gmail.com", updatedReservation);
             return ResponseEntity.ok(updatedReservation);
         } else {
             return ResponseEntity.notFound().build();
@@ -124,11 +130,23 @@ public class ReservationServiceImpl implements ReservationService {
         //If found, delete reservation with response message
         if(reservation != null){
             reservationRepository.delete(reservation);
+
+            //Send cancellation email
+            emailService.sendReservationCancellation("kennydampresentations@gmail.com", reservation);
+
             return ResponseEntity.ok("Reservation " + reservationNo + " has been cancelled");
         }
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @Override
+    public boolean isRoomAvailable(Long roomId, LocalDate checkInDate, LocalDate checkOutDate) {
+        //Check if there are any reservations that overlap with the specified dates
+        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(roomId, checkInDate, checkOutDate);
+
+        return overlappingReservations.isEmpty();
     }
 
 }

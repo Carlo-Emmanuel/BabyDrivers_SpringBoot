@@ -61,5 +61,39 @@ public class ReservationResponse {
                         reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
     }
 
+    public String toCancellationFormattedString() {
+        return String.format("Dear Guest,\n\n" +
+                        "This is a confirmation that your booking has been canceled\n\n" +
+                        "Below are the complete details of your booking:\n\n" +
+                        "*Booking details*\n" +
+                        "Booking Number: %s\n" +
+                        "Check-in date: %s\n" +
+                        "Check-out date: %s\n\n" +
+                        "*Guest information*\n" +
+                        "First Name: %s\n" +
+                        "Last Name: %s\n" +
+                        "Email: %s\n\n" +
+                        "*Payment Information*\n" +
+                        "Total Amount: %s\n\n" +
+                        "We hope to see you again soon!",
+                reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
+    }
 
+    public String toEditFormattedString() {
+        return String.format("Dear Guest,\n\n" +
+                        "This is a confirmation that your booking has been edited\n\n" +
+                        "Below are the complete details of your booking:\n\n" +
+                        "*Booking details*\n" +
+                        "Booking Number: %s\n" +
+                        "Check-in date: %s\n" +
+                        "Check-out date: %s\n\n" +
+                        "*Guest information*\n" +
+                        "First Name: %s\n" +
+                        "Last Name: %s\n" +
+                        "Email: %s\n\n" +
+                        "*Payment Information*\n" +
+                        "Total Amount: %s\n\n" +
+                        "We hope to see you soon!",
+                reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
+    }
 }

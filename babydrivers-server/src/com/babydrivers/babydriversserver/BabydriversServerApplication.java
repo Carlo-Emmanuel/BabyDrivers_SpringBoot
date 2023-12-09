@@ -23,14 +23,14 @@ public class BabydriversServerApplication {
 //                            BigDecimal.valueOf(200), true));
 //            roomRepository.save(new Room(2L,"Single Bed",
 //                            BigDecimal.valueOf(200), true));
-//            roomRepository.save(new Room(3L,"Double Bed",
+//            roomRepository.save(new Room(2L,"Double Bed",
 //                            BigDecimal.valueOf(380), true));
 //            roomRepository.save(new Room(4L,"Double Bed",
 //                            BigDecimal.valueOf(380), true));
-            roomRepository.save(new Room(10L,"Single Suite",
-                            BigDecimal.valueOf(450), true));
-            roomRepository.save(new Room(11L,"Double Suite",
-                            BigDecimal.valueOf(800), true));
+//            roomRepository.save(new Room(3L,"Single Suite",
+//                            BigDecimal.valueOf(450), true));
+//            roomRepository.save(new Room(4L,"Double Suite",
+//                            BigDecimal.valueOf(800), true));
         };
     }
 

@@ -23,5 +23,29 @@ public class EmailService {
 
         javaMailSender.send(message);
     }
+
+    //Send reservation cancellation email
+    public void sendReservationCancellation(String email, Reservation reservation) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        ReservationResponse reservationResponse = new ReservationResponse(reservation);
+
+        message.setSubject("Reservation Cancellation: " + reservationResponse.getReservationNo());
+        message.setTo(email);
+        message.setText(reservationResponse.toCancellationFormattedString());
+
+        javaMailSender.send(message);
+    }
+
+    //Send reservation edit confirmation email
+    public void sendReservationEditConfirmation(String email, Reservation reservation) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        ReservationResponse reservationResponse = new ReservationResponse(reservation);
+
+        message.setSubject("Reservation Edit Confirmation: " + reservationResponse.getReservationNo());
+        message.setTo(email);
+        message.setText(reservationResponse.toEditFormattedString());
+
+        javaMailSender.send(message);
+    }
 }
 

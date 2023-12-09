@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
@@ -72,14 +73,16 @@ public class ReservationController {
 
     //PUT endpoint to edit reservation
     @PutMapping("/{reservationNo}")
-    public ResponseEntity<Reservation> editReservation(@PathVariable String reservationNo, @RequestBody ReservationRequest request){
+    public ResponseEntity<ReservationResponse> editReservation(@PathVariable String reservationNo, @RequestBody ReservationRequest request){
         try{
 
           ResponseEntity<Reservation> updatedReservation = reservationService.editReservation(reservationNo, request);
-          return updatedReservation;
 
-            //Trying out inline return statement suggested by IntelliJ
-//            return reservationService.editReservation(reservationId, request);
+          ReservationResponse response = new ReservationResponse(Objects.requireNonNull(updatedReservation.getBody()));
+
+          return ResponseEntity.ok(response);
+
+
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
         }

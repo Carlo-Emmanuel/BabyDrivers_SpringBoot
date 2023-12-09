@@ -3,10 +3,12 @@ package com.babydrivers.babydriversserver.service;
 import com.babydrivers.babydriversserver.entity.Reservation;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public interface ReservationService {
 
     public Reservation createReservation(String firstName,
@@ -26,5 +28,7 @@ public interface ReservationService {
     public ResponseEntity<String> cancelReservation(String reservationNo);
 
     public List<Reservation> getAllReservations();
+
+    public boolean isRoomAvailable(Long roomId, LocalDate checkInDate, LocalDate checkOutDate);
 
 }
