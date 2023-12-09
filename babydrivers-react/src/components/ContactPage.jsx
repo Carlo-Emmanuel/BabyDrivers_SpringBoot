@@ -1,22 +1,26 @@
 import React from 'react'
+import ImageCarousel from "./ImageCarousel";
+import { contacts_slides } from "./contactsCarousel.json";
 
 const ContactPage = () => {
   return (
 
     <div className='contact_content'>ContactPage
         <h2>
-            Terms and Conditions
+            Contact Us
         </h2>
-        <h4>
-            <ol>
-                <li>
-                    
-                </li>
-            </ol>
-        </h4>
+        <ImageCarousel data={contacts_slides}></ImageCarousel>
     </div>
 
   )
 }
+
+        // <h4>
+        //     <ol>
+        //         <li>
+                    
+        //         </li>
+        //     </ol>
+        // </h4>
 
 export default ContactPage
