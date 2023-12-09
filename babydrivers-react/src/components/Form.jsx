@@ -52,6 +52,7 @@ const Form = () => {
             id="first-name"
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Enter your first name"
+            required
           />
         </div>
         <div className="mb-3">
@@ -65,6 +66,7 @@ const Form = () => {
             id="last-name"
             onChange={(e) => setLastName(e.target.value)}
             placeholder="Enter your last name"
+            required
           />
         </div>
         {/* <div class="mb-3">
@@ -113,6 +115,7 @@ const Form = () => {
             id="id"
             onChange={(e) => setID(e.target.value)}
             placeholder="Enter room ID"
+            required
           />
         </div>
         <div className="mb-3">
@@ -126,6 +129,7 @@ const Form = () => {
             min="2023-12-01"
             max="2040-12-31"
             onChange={(e) => setCheckIn(e.target.value)}
+            required
           />
         </div>
         <div className="mb-3">
@@ -139,6 +143,7 @@ const Form = () => {
             min="2023-12-01"
             max="2040-12-31"
             onChange={(e) => setCheckOut(e.target.value)}
+            required
           />
         </div>
         <div className="button-container">
