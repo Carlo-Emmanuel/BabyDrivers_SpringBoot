@@ -37,8 +37,8 @@ public class Reservation {
 //    @OneToOne(cascade = CascadeType.ALL) Might be inadvertently deleting rooms
 //    @JoinColumn(name = "room_id", referencedColumnName = "id")
 
-    @OneToOne
-    @JoinColumn(name = "room_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "room_id", unique = false)
     private Room room;
 
     //Calculate reservation total based on room price and number of days

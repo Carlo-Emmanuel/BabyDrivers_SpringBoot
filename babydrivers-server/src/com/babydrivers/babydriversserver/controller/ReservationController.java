@@ -1,12 +1,20 @@
 package com.babydrivers.babydriversserver.controller;
 
 import com.babydrivers.babydriversserver.entity.Reservation;
+import com.babydrivers.babydriversserver.exception.RoomNotAvailableException;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
 import com.babydrivers.babydriversserver.response.ReservationResponse;
 import com.babydrivers.babydriversserver.service.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
 
 @RestController
 @RequestMapping("/reservations")
@@ -15,9 +23,6 @@ public class ReservationController {
 
     @Autowired
     private ReservationServiceImpl reservationService;
-
-    //TODO: add endpoint to get all reservations
-
 
     //POST endpoint to create reservation
     @PostMapping("/create")
@@ -32,7 +37,9 @@ public class ReservationController {
    //         reservation.setReservationTotal(reservation.getReservationTotal());
             ReservationResponse response = new ReservationResponse(reservation);
             return ResponseEntity.ok(response);
-
+        }
+        catch (RoomNotAvailableException e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -54,17 +61,40 @@ public class ReservationController {
         }
     }
 
+    //GET endpoint to get all reservations
+    @GetMapping("/all")
+    public ResponseEntity<List<ReservationResponse>> getAllReservations(){
+        try{
+            List<ReservationResponse> response = reservationService.getAllReservations()
+                    .stream()
+                    .map(ReservationResponse::new)
+                    .collect(Collectors.toList());
+            return ResponseEntity.ok(response);
+        } catch(Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     //PUT endpoint to edit reservation
     @PutMapping("/{reservationNo}")
-    public ResponseEntity<Reservation> editReservation(@PathVariable String reservationNo, @RequestBody ReservationRequest request){
+    public ResponseEntity<ReservationResponse> editReservation(@PathVariable String reservationNo, @RequestBody ReservationRequest request){
         try{
 
           ResponseEntity<Reservation> updatedReservation = reservationService.editReservation(reservationNo, request);
-          return updatedReservation;
 
-            //Trying out inline return statement suggested by IntelliJ
-//            return reservationService.editReservation(reservationId, request);
-        } catch(Exception e){
+          ReservationResponse response = new ReservationResponse(Objects.requireNonNull(updatedReservation.getBody()));
+
+          return ResponseEntity.ok(response);
+
+
+        }
+
+
+        catch (RoomNotAvailableException e){
+        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+        catch (Exception e) {
+            //Handle other exceptions
             return ResponseEntity.badRequest().build();
         }
     }
@@ -76,10 +106,10 @@ public class ReservationController {
             ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
             return cancelledReservation;
 
-            //Trying out inline return statement suggested by IntelliJ
-//            return reservationService.cancelReservation(reservationNo);
+
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
     }
+
 }
