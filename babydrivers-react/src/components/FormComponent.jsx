@@ -37,41 +37,7 @@ const FormComponent = () => {
             placeholder="Enter your last name"
           />
         </div>
-        {/* <div class="mb-3">
-          <label htmlFor="user-email" class="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            value={email}
-            id="user-email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
-        </div>
-        <div class="mb-3">
-          <label htmlFor="user-phone" class="form-label">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            class="form-control"
-            value={phoneNumber}
-            id="user-phone"
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Enter your phone"
-          />
-        </div> */}
-        {/*  <div className="mb-3">
-          <label htmlFor=""></label>
-          <select id="cars" name="cars">
-            <option value="singleBed">Single Bed</option>
-            <option value="doubleBed">Double Bed</option>
-            <option value="singleSuite">Single Suite</option>
-            <option value="doubleSuite">Audi</option>
-          </select>
-        </div> */}
+
         <div class="mb-3">
           <label htmlFor="id" class="form-label">
             ID
