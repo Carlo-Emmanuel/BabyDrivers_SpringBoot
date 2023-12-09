@@ -2,6 +2,7 @@ package com.babydrivers.babydriversserver.service;
 
 import com.babydrivers.babydriversserver.entity.Reservation;
 import com.babydrivers.babydriversserver.entity.Room;
+import com.babydrivers.babydriversserver.exception.RoomNotAvailableException;
 import com.babydrivers.babydriversserver.repository.ReservationRepository;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
 import com.babydrivers.babydriversserver.response.ReservationResponse;
@@ -45,7 +46,7 @@ public class ReservationServiceImpl implements ReservationService {
                                      Long roomId){
         //Check if room is available
         if (!isRoomAvailable(roomId, checkInDate, checkOutDate)) {
-            throw new RuntimeException("Room not available for the specified dates");
+            throw new RoomNotAvailableException("Room not available for the specified dates");
         }
 
         Reservation reservation = new Reservation();

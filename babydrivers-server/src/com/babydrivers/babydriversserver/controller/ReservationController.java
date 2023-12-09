@@ -1,10 +1,12 @@
 package com.babydrivers.babydriversserver.controller;
 
 import com.babydrivers.babydriversserver.entity.Reservation;
+import com.babydrivers.babydriversserver.exception.RoomNotAvailableException;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
 import com.babydrivers.babydriversserver.response.ReservationResponse;
 import com.babydrivers.babydriversserver.service.ReservationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +37,9 @@ public class ReservationController {
    //         reservation.setReservationTotal(reservation.getReservationTotal());
             ReservationResponse response = new ReservationResponse(reservation);
             return ResponseEntity.ok(response);
-
+        }
+        catch (RoomNotAvailableException e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -83,7 +87,14 @@ public class ReservationController {
           return ResponseEntity.ok(response);
 
 
-        } catch(Exception e){
+        }
+
+
+        catch (RoomNotAvailableException e){
+        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+        catch (Exception e) {
+            //Handle other exceptions
             return ResponseEntity.badRequest().build();
         }
     }
@@ -95,8 +106,7 @@ public class ReservationController {
             ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
             return cancelledReservation;
 
-            //Trying out inline return statement suggested by IntelliJ
-//            return reservationService.cancelReservation(reservationNo);
+
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
