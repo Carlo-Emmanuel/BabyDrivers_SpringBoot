@@ -39,7 +39,7 @@ const EditReservation = () => {
         default:
           id = 0;
       }
-      
+
       const response = await axios.put(url, {
         firstName: firstName,
         lastName: lastName,
@@ -49,11 +49,16 @@ const EditReservation = () => {
       });
       console.log("Reservation updated:", response.data);
       setModalVisibility(false);
+      alert(
+        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
+      );
     } catch (error) {
       console.error("Error updating reservation:", error);
       console.log(error.response);
     }
   };
+
+ 
 
   //get request to fill the form with the user's data
   const handleSearch = async (e) => {
