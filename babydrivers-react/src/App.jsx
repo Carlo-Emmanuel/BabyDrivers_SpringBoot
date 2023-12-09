@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 import Managerr from "./components/Managerr";
 import PaymentForm from "./components/PaymentForm";
 import EditReservation from "./components/EditReservation";
-import ImageCarousel from "./components/ImageCarousel";
-import { slides } from "./components/homeCarousel.json";
+import ContactPage from "./components/ContactPage";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -35,6 +34,7 @@ function App() {
             path="/edit"
             element={<EditReservation></EditReservation>}
           ></Route>
+          <Route path="/contact" element={<ContactPage />}></Route>
         </Routes>
       </div>
     </Router>

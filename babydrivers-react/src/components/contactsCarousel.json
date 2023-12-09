@@ -1,0 +1,34 @@
+{
+    "contacts_slides": [
+        {
+            "src": "./images/pexels-andrea-piacquadio-3769710.jpg",
+            "alt": "image 1 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3769711.jpg",
+            "alt": "image 2 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3769715.jpg",
+            "alt": "image 3 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3769740.jpg",
+            "alt": "image 4 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3770091.jpg",
+            "alt": "image 5 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3770102.jpg",
+            "alt": "image 6 for contacts carousel"
+        },
+        {
+            "src": "./images/pexels-andrea-piacquadio-3772615.jpg",
+            "alt": "image 7 for contacts carousel"
+        }
+    ]
+    
+}
+
