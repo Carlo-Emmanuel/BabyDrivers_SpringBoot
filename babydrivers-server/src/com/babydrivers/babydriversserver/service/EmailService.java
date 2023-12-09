@@ -29,7 +29,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         ReservationResponse reservationResponse = new ReservationResponse(reservation);
 
-        message.setSubject("Reservation Cancellation: " + reservationResponse.getReservationNo());
+        message.setSubject("Your Booking Has Been Canceled: " + reservationResponse.getReservationNo());
         message.setTo(email);
         message.setText(reservationResponse.toCancellationFormattedString());
 
@@ -41,7 +41,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         ReservationResponse reservationResponse = new ReservationResponse(reservation);
 
-        message.setSubject("Reservation Edit Confirmation: " + reservationResponse.getReservationNo());
+        message.setSubject("Your Booking Has Been Changed: " + reservationResponse.getReservationNo());
         message.setTo(email);
         message.setText(reservationResponse.toEditFormattedString());
 
