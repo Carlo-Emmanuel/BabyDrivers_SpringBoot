@@ -11,7 +11,7 @@ import {
 
 export const NavBar = () => {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className="navbar">
       <Container className="nav-container">
         <div className="brand">
           <img src={logo} className="logo" alt="logo"></img>
