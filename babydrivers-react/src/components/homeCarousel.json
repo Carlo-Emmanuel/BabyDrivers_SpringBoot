@@ -1,7 +1,7 @@
 {
     "slides": [
         {
-            "src": "./src/assets/images/dpexels-asad-photo-maldives-1268871.jpg",
+            "src": "./src/assets/images/pexels-asad-photo-maldives-1268871.jpg",
             "alt": "image 1 for home carousel"
         },
         {
@@ -21,4 +21,6 @@
             "alt": "image 5 for home carousel"
         }
     ]
+    
 }
+

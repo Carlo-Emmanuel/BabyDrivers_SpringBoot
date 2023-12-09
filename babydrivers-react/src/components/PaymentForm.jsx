@@ -1,89 +1,78 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
-  const [firstName, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [cardNum, setCardNum] = useState("");
-  const [CVV, setCVV] = useState("");
-  const [cardExp, setCardExp] = useState("");
+  const navigateTo = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const resp = await axios.post(url, { name: name, email: email });
-      console.log(resp.data);
-    } catch (error) {
-      console.log(error.response);
-    }
+    alert("Payment Accepted!");
   };
-
-/* 
-Cardnumber = int
-CVV = int
-expiry date = date
-first name = text
-last name = text
- */
 
   return (
     <div className="payment-container">
       <form action="" id="payment-form" onSubmit={handleSubmit}>
-        <div class="pay">
-          <label for="first-name" class="form-label">
-            Cardholder's First Name
+        <div class="mb-3">
+          <label for="card-number" class="form-label">
+            Card Number
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="card-number"
+            placeholder="**** **** **** ****"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="cvv-number" class="form-label">
+            CVV Number
+          </label>
+          <input
+            type="cvv"
+            class="form-control"
+            id="cvv-number"
+            placeholder="***"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Start month:</label>
+          <input
+            type="month"
+            id="start"
+            name="start"
+            min="2018-03"
+            value="2018-05"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="first-name" class="form-label">
+            First Name
           </label>
           <input
             type="text"
             class="form-control"
             id="first-name"
-            placeholder="John"
+            placeholder="Enter your first name"
             required
           />
         </div>
-        <div class="pay">
-          <label for="last-name" class="form-label">
-            Cardholder's Last Name
+        <div className="mb-3">
+          <label htmlFor="last-name" class="form-label">
+            Last Name
           </label>
           <input
             type="text"
             class="form-control"
             id="last-name"
-            placeholder="Doe"
+            placeholder="Enter your last name"
             required
           />
         </div>
-        <div class="pay">
-          <label for="user-email" class="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            id="user-email"
-            placeholder="johndoe123@gmail.com"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="user-phone" class="form-label">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            class="form-control"
-            id="user-phone"
-            placeholder="818"
-            required
-            maxLength={11}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          />
-        </div>
-        <div class= "pay">
-          <button type="submit" id="submit">
+        <div class="payment-button-container">
+          <button type="submit" id="submit" onClick={() => navigateTo("/")}>
             Submit Payment
           </button>
         </div>
