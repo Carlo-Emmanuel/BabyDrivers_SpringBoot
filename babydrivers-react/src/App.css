@@ -74,7 +74,7 @@ body{
   }
 }
 
-/************ Navbar Css ************/
+/* Navbar Css */
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -481,14 +481,13 @@ section p {
 .images {
   width: 600px;
   height: 400px;
-  transition: transform 0.5s ease; /* Add a transition for smooth sliding */
+  transition: transform 0.5s ease; 
 }
 
 .slide {
   border-radius: 0.5rem;
-  width: 400%; /* Set the desired width */
-  height: 600px; /* Set the desired height */
-  /* when altering this... change .indicators for location of indicator icons */
+  width: 400%;
+  height: 600px; 
 }
 
 .slide-hidden {
@@ -508,7 +507,6 @@ section p {
   height: -2rem;
 }
 
-/*   transform: translateX(-50%); */
 
 .indicator {
   background-color: white;
@@ -519,7 +517,7 @@ section p {
 }
 
 .indicator-inactive {
-  background-color: gray; /* Change this color to your preferred active indicator color */
+  background-color: gray; 
 }
 
 .arrow {
@@ -533,9 +531,9 @@ section p {
 }
 
 .arrow-left {
-  left: 1px; /* Adjust this value as needed */
+  left: 1px;
 }
 
 .arrow-right {
-  right: 1px; /* Adjust this value as needed */
+  right: 1px; 
 }

@@ -33,18 +33,6 @@ export const NavBar = () => {
             >
               Reservation
             </NavLink>
-            {/* 
-            <Nav.Link
-              href="#reservation"
-              className={
-                activeLink === "reservation"
-                  ? "active navbar-link"
-                  : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("reservation")}
-            >
-              Reservation
-            </Nav.Link> */}
 
             <Nav.Link
               href="#contact"
