@@ -45,9 +45,9 @@ public class ReservationServiceImpl implements ReservationService {
                                      LocalDate checkOutDate,
                                      Long roomId){
         //Check if room is available
-        if (!isRoomAvailable(roomId, checkInDate, checkOutDate)) {
-            throw new RoomNotAvailableException("Room not available for the specified dates");
-        }
+//        if (!isRoomAvailable(roomId, checkInDate, checkOutDate)) {
+//            throw new RoomNotAvailableException("Room not available for the specified dates");
+//        }
 
         Reservation reservation = new Reservation();
         reservation.setFirstName(firstName);
@@ -114,6 +114,11 @@ public class ReservationServiceImpl implements ReservationService {
 
             //Save the updated reservation
             Reservation updatedReservation = reservationRepository.save(existingReservation);
+
+            //Calculate reservation total
+            updatedReservation.calculateReservationTotal();
+
+            reservationRepository.save(updatedReservation);
 
             //Send confirmation email
             emailService.sendReservationEditConfirmation("kennydampresentations@gmail.com", updatedReservation);

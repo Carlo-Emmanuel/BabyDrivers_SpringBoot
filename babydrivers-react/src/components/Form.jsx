@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [id, setID] = useState("");
+  const [roomType, setRoomType] = useState("");
+  // const [id, setID] = useState("");
   const [checkInDate, setCheckIn] = useState("");
   const [checkOutDate, setCheckOut] = useState("");
 
@@ -16,14 +17,32 @@ const Form = () => {
     e.preventDefault();
     try {
       const url = "http://localhost:8080/reservations/create";
+      let id;
+
+      switch (roomType) {
+        case "Single Bed ($200/night)":
+          id = 9;
+          break;
+        case "Double Bed($400/night)":
+          id = 7;
+          break;
+        case "Single Suite($450/night)":
+          id = 10;
+          break;
+        case "Double Suite($800/night)":
+          id = 11;
+          break;
+        default:
+          id = 0;
+      }
+
       const response = await axios.post(url, {
         firstName: firstName,
         lastName: lastName,
-        // convert Dates from String to localDate
+        //Convert Dates from String to localDate
         checkInDate: new Date(checkInDate).toISOString().split("T")[0],
         checkOutDate: new Date(checkOutDate).toISOString().split("T")[0],
-        roomId: Number(id),
-        z,
+        roomId: Number(id)
       });
 
       alert(
@@ -70,6 +89,42 @@ const Form = () => {
           />
         </div>
 
+        {/* <div class="mb-3">
+          <label htmlFor="user-email" class="form-label">
+            Email
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            value={email}
+            id="user-email"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="user-phone" class="form-label">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            class="form-control"
+            value={phoneNumber}
+            id="user-phone"
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Enter your phone"
+          />
+        </div> */}
+        {/*  <div className="mb-3">
+          <label htmlFor=""></label>
+          <select id="cars" name="cars">
+            <option value="singleBed">Single Bed</option>
+            <option value="doubleBed">Double Bed</option>
+            <option value="singleSuite">Single Suite</option>
+            <option value="doubleSuite">Audi</option>
+          </select>
+        </div> */}
+        {/* <div class="mb-3">
         <div class="mb-3">
           <label htmlFor="id" class="form-label">
             ID
@@ -83,6 +138,25 @@ const Form = () => {
             placeholder="Enter room ID"
             required
           />
+        </div> */}
+
+        <div className="mb-3">
+          <label htmlFor="room-type" className="form-label">
+            Room Type
+          </label>
+          <select
+            id="room-type"
+            className="form-select"
+            value={roomType}
+            onChange={(e) => setRoomType(e.target.value)}
+            required
+          >
+            <option value="">Select Room Type</option>
+            <option value="Single Bed ($200/night)">Single Bed ($200/night)</option>
+            <option value="Double Bed($400/night)">Double Bed($400/night)</option>
+            <option value="Single Suite($450/night)">Single Suite($450/night)</option>
+            <option value="Double Suite($800/night)">Double Suite($800/night)</option>
+          </select>
         </div>
         <div className="mb-3">
           <label htmlFor="user-check-in" class="form-label">

@@ -81,7 +81,7 @@ public class ReservationResponse {
 
     public String toEditFormattedString() {
         return String.format("Dear Guest,\n\n" +
-                        "This is a confirmation that your booking has been edited\n\n" +
+                        "This is a confirmation that your booking has been changed\n\n" +
                         "Below are the complete details of your booking:\n\n" +
                         "*Booking details*\n" +
                         "Booking Number: %s\n" +
