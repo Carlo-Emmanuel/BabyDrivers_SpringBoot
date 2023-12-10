@@ -59,13 +59,10 @@ const RoomFetchingComponent = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-<<<<<<< HEAD
   const [totalRevenue, setTotalRevenue] = useState(0);
-=======
   const [username, setUsername] = useState('');
   const [logIn, setLogIn] = useState(false);
   const [pword, setPword] = useState('');
->>>>>>> 597f854628f9f71c82921cd8aa3c32c941ae5958
 
   const url = "http://localhost:8080/reservations/all";
 
@@ -97,21 +94,13 @@ const RoomFetchingComponent = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="manager-container">
-      <div className="manager-header">
-        <h1>MANAGER VIEW</h1>
-        <i className="fa-solid fa-user-tie"></i>
-      </div>
-      <h1>Active Reservations</h1>
-=======
     <div className="manager-container"> 
     <div className="manager-header">
     <h1>MANAGER VIEW</h1>
     <i className="fa-solid fa-user-tie"></i>
     </div>
 
-    <h1>Booked Rooms</h1>
+    <h1>Reservations</h1>
 
     {!logIn ? (
     <div className="log-in-container">
@@ -143,7 +132,6 @@ const RoomFetchingComponent = () => {
     </div>
     ) : (
       <>
->>>>>>> 597f854628f9f71c82921cd8aa3c32c941ae5958
       {loading && <p>Loading...</p>}
       {/* {error && <p>Error: {error}</p>} */}
       {data.length > 0 && (
@@ -173,18 +161,15 @@ const RoomFetchingComponent = () => {
             ))}
           </tbody>
         </table>
+        
       )}
-<<<<<<< HEAD
-
-      <div className="total-revenue">
-        <p>YTD Revenue: ${totalRevenue}</p>
-      </div>
-    </div>
-=======
+        <div className="total-revenue">
+          <p>YTD Revenue: ${totalRevenue}</p>
+        </div>
       </>
     )}
+  
     </div> 
->>>>>>> 597f854628f9f71c82921cd8aa3c32c941ae5958
   );
 };
 

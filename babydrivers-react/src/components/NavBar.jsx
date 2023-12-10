@@ -39,7 +39,6 @@ export const NavBar = () => {
             >
               Reservation
             </NavLink>
-<<<<<<< HEAD
             
             {/* 
             <Nav.Link
@@ -53,8 +52,6 @@ export const NavBar = () => {
             >
               Reservation
             </Nav.Link> */}
-=======
->>>>>>> 597f854628f9f71c82921cd8aa3c32c941ae5958
 
             <Nav.Link
               href="#contact"
