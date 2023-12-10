@@ -15,6 +15,21 @@ const EditReservation = () => {
 
   const navigateTo = useNavigate();
 
+  const cancelReservation = async () => {
+    const isConfirmed = window.confirm("Are you sure you want to cancel this reservation?");
+    if(isConfirmed){
+      try {
+        const response = await axios.delete(
+          `http://localhost:8080/reservations/cancel/${confirmCode}`
+        );
+        alert("Reservation Canceled!");
+        navigateTo("/");
+      } catch (error) {
+        console.error("Error canceling reservation:", error);
+      }
+    }
+  };
+
   // put request
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,9 +64,11 @@ const EditReservation = () => {
       });
       console.log("Reservation updated:", response.data);
       setModalVisibility(false);
-      alert(
-        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
-      );
+      alert("Email Confirmation Sent!");
+      navigateTo("/");
+      // alert(
+      //   `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
+      // );
     } catch (error) {
       console.error("Error updating reservation:", error);
       console.log(error.response);
@@ -207,6 +224,14 @@ const EditReservation = () => {
                 </div>
               </div>
               <div className="modal-footer">
+          
+                <button
+                  type="button"
+                  className="btn btn-primary btn-modal-submit"
+                  onClick={handleSubmit}
+                >
+                  Save changes
+                </button>
                 <button
                   type="button"
                   className="btn btn-secondary btn-modal-close"
@@ -217,10 +242,10 @@ const EditReservation = () => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary btn-modal-submit"
-                  onClick={handleSubmit}
+                  className="btn btn-danger btn-modal-cancel"
+                  onClick={cancelReservation}
                 >
-                  Save changes
+                  Cancel Reservation
                 </button>
               </div>
             </div>

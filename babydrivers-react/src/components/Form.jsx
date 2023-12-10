@@ -52,12 +52,12 @@ const Form = () => {
         roomId: Number(id)
       });
 
-      alert(
-        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
-      );
+      // alert(
+      //   `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
+      // );
 
       console.log(response.data);
-      ("/payment");
+      navigateTo("/payment");
     } catch (error) {
       console.error("Error submitting form:", error.responses);
       navigateTo("/payment");

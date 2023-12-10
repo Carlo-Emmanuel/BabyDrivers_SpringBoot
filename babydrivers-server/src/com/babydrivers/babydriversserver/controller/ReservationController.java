@@ -106,6 +106,9 @@ public class ReservationController {
             ResponseEntity<String> cancelledReservation = reservationService.cancelReservation(reservationNo);
             return cancelledReservation;
 
+//            String cancelledReservation = reservationService.cancelReservation(reservationNo);
+//            return ResponseEntity.ok(cancelledReservation);
+
 
         } catch(Exception e){
             return ResponseEntity.badRequest().build();
