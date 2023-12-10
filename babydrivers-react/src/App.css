@@ -376,6 +376,7 @@ section p {
   display: flex;
   flex-direction: row;
   justify-self: flex-start;
+  margin-top: 100px;
   gap: 20px;
 
 }
@@ -621,3 +622,4 @@ section p {
 .arrow-right {
   right: 1px; 
 }
+

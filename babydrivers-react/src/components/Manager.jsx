@@ -1,59 +1,6 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// const RoomFetchingComponent = () => {
-//   const [data, setData] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   const url = "http://localhost:8080/reservations/all";
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await axios.get(url);
-//         setData(response.data);
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error.message);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div className="manager-container"> 
-//     <div className="manager-header">
-//     <h1>MANAGER VIEW</h1>
-//     <i class="fa-solid fa-user-tie"></i>
-//     </div>
-//       <h1>Booked Rooms</h1>
-//       {loading && <p>Loading...</p>}
-//       {error && <p>Error: {error}</p>}
-//       {data.length > 0 && (
-//         <div className="rooms">
-//           {data.map((room) => (
-//             <div className="room" key={room.id}>
-//               <h3>Room Type: {room.name}</h3>
-//               <p>Ocupant Fisrt name: {room.firstName}</p>
-//               <p>Ocupent Last name:{room.lastName}</p>
-//               <p>Check in {room.checkInDate}</p>
-//               <p>Check Out {room.checkOutDate}</p>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default RoomFetchingComponent;
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import * as XLSX from 'xlsx';
 
 const RoomFetchingComponent = () => {
   const [data, setData] = useState([]);
@@ -93,6 +40,13 @@ const RoomFetchingComponent = () => {
     setLogIn(pword === 'password' && username === 'manager' ? true : false)
   }
 
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Reservations');
+    XLSX.writeFile(wb, 'reservations_report.xlsx');
+  };
+
   return (
     <div className="manager-container"> 
     <div className="manager-header">
@@ -128,7 +82,9 @@ const RoomFetchingComponent = () => {
         placeholder="Enter password"
         required
       />
-      <button onClick={logInHandler}>Login</button>
+      <button onClick={logInHandler} style={{ marginTop: '10px' }}>
+        Login
+      </button>
     </div>
     ) : (
       <>
@@ -165,6 +121,7 @@ const RoomFetchingComponent = () => {
       )}
         <div className="total-revenue">
           <p>YTD Revenue: ${totalRevenue}</p>
+          <p><button onClick={exportToExcel}>Print Report</button></p>
         </div>
       </>
     )}
