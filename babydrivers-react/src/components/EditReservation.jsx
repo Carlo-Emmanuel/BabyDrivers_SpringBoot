@@ -8,17 +8,53 @@ const EditReservation = () => {
   const [isModalVisible, setModalVisibility] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [id, setID] = useState("");
+  const [roomType, setRoomType] = useState("");
+  // const [id, setID] = useState("");
   const [checkInDate, setCheckIn] = useState("");
   const [checkOutDate, setCheckOut] = useState("");
 
   const navigateTo = useNavigate();
+
+  const cancelReservation = async () => {
+    const isConfirmed = window.confirm("Are you sure you want to cancel this reservation?");
+    if(isConfirmed){
+      try {
+        const response = await axios.delete(
+          `http://localhost:8080/reservations/cancel/${confirmCode}`
+        );
+        alert("Reservation Canceled!");
+        navigateTo("/");
+      } catch (error) {
+        console.error("Error canceling reservation:", error);
+      }
+    }
+  };
 
   // put request
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = `http://localhost:8080/reservations/${confirmCode}`;
+
+      let id;
+
+      switch (roomType) {
+        case "Single Bed ($200/night)":
+          id = 9;
+          break;
+        case "Double Bed($400/night)":
+          id = 7;
+          break;
+        case "Single Suite($450/night)":
+          id = 10;
+          break;
+        case "Double Suite($800/night)":
+          id = 11;
+          break;
+        default:
+          id = 0;
+      }
+
       const response = await axios.put(url, {
         firstName: firstName,
         lastName: lastName,
@@ -28,11 +64,18 @@ const EditReservation = () => {
       });
       console.log("Reservation updated:", response.data);
       setModalVisibility(false);
+      alert("Email Confirmation Sent!");
+      navigateTo("/");
+      // alert(
+      //   `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
+      // );
     } catch (error) {
       console.error("Error updating reservation:", error);
       console.log(error.response);
     }
   };
+
+ 
 
   //get request to fill the form with the user's data
   const handleSearch = async (e) => {
@@ -42,6 +85,7 @@ const EditReservation = () => {
       const response = await axios.get(
         `http://localhost:8080/reservations/${confirmCode}`
       );
+
       setRoomData(response.data);
       setModalVisibility(true);
 
@@ -119,7 +163,7 @@ const EditReservation = () => {
                         placeholder="Enter your last name"
                       />
                     </div>
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                       <label htmlFor="id" className="form-label">
                         ID
                       </label>
@@ -131,6 +175,24 @@ const EditReservation = () => {
                         onChange={(e) => setID(e.target.value)}
                         placeholder="Enter room ID"
                       />
+                    </div> */}
+                    <div className="mb-3">
+                      <label htmlFor="room-type" className="form-label">
+                        Room Type
+                      </label>
+                      <select
+                        id="room-type"
+                        className="form-select"
+                        value={roomType}
+                        onChange={(e) => setRoomType(e.target.value)}
+                        required
+                      >
+                        <option value="">Select Room Type</option>
+                        <option value="Single Bed ($200/night)">Single Bed($200/night)</option>
+                        <option value="Double Bed($400/night)">Double Bed($400/night)</option>
+                        <option value="Single Suite($450/night)">Single Suite($450/night)</option>
+                        <option value="Double Suite($800/night)">Double Suite($800/night)</option>
+                      </select>
                     </div>
                     <div className="mb-3">
                       <label htmlFor="user-check-in" className="form-label">
@@ -162,6 +224,14 @@ const EditReservation = () => {
                 </div>
               </div>
               <div className="modal-footer">
+          
+                <button
+                  type="button"
+                  className="btn btn-primary btn-modal-submit"
+                  onClick={handleSubmit}
+                >
+                  Save changes
+                </button>
                 <button
                   type="button"
                   className="btn btn-secondary btn-modal-close"
@@ -172,10 +242,10 @@ const EditReservation = () => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary btn-modal-submit"
-                  onClick={handleSubmit}
+                  className="btn btn-danger btn-modal-cancel"
+                  onClick={cancelReservation}
                 >
-                  Save changes
+                  Cancel Reservation
                 </button>
               </div>
             </div>

@@ -22,7 +22,7 @@ public class RoomController {
     }
 
     //Endpoint to get all rooms
-    @GetMapping("/all-rooms")
+    @GetMapping("/all")
     public List<Room> getRooms() {
         return roomServiceImpl.getRooms();
     }

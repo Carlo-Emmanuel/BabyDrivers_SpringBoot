@@ -74,7 +74,7 @@ body{
   }
 }
 
-/************ Navbar Css ************/
+/* Navbar Css */
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -376,6 +376,7 @@ section p {
   display: flex;
   flex-direction: row;
   justify-self: flex-start;
+  margin-top: 100px;
   gap: 20px;
 
 }
@@ -444,8 +445,7 @@ section p {
   height: 500px;
 }
 
-.modal-body form{
-}
+
 
 .modal-content{
   display: flex;
@@ -481,14 +481,13 @@ section p {
 .images {
   width: 600px;
   height: 400px;
-  transition: transform 0.5s ease; /* Add a transition for smooth sliding */
+  transition: transform 0.5s ease; 
 }
 
 .slide {
   border-radius: 0.5rem;
-  width: 400%; /* Set the desired width */
-  height: 600px; /* Set the desired height */
-  /* when altering this... change .indicators for location of indicator icons */
+  width: 400%;
+  height: 600px; 
 }
 
 .slide-hidden {
@@ -508,7 +507,6 @@ section p {
   height: -2rem;
 }
 
-/*   transform: translateX(-50%); */
 
 .indicator {
   background-color: white;
@@ -519,7 +517,7 @@ section p {
 }
 
 .indicator-inactive {
-  background-color: gray; /* Change this color to your preferred active indicator color */
+  background-color: gray; 
 }
 
 .arrow {
@@ -532,10 +530,96 @@ section p {
   cursor: pointer;
 }
 
-.arrow-left {
-  left: 1px; /* Adjust this value as needed */
+/* .arrow-left {
+  left: 10px; 
+} */
+
+/* .arrow-right {
+  right: 10px; 
+} */
+
+/* MANAGER VIEW CSS */
+.rooms-table {
+  width: 70%;
+  border-collapse: collapse;
+  margin-top: 20px; 
+}
+
+.table-cell {
+  padding: 10px; 
+  border: 1px solid #ddd; 
+  text-align: left;
+}
+
+.total-revenue {
+  margin-top: 20px; 
+  font-size: 20px; 
+  font-weight: bold;
+  text-align: right;
+  padding-left: 980px;
+}
+
+/* Table lines */
+.rooms-table th,
+.rooms-table td {
+  border: 1px solid #ddd; 
+  padding: 8px; 
+  text-align: left;
+}
+
+
+/* Rooms CSS */
+
+.rooms-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  text-align: center;
+  margin-top: 150px;
+}
+.rooms-list {
+ margin-top: 70px;
+ margin-left: 200px;
+}
+
+.rooms-image {
+  width: 500px; 
+  height: 400px; 
+  object-fit: cover; 
+}
+
+.room {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.room-image {
+  flex: 0 0 50%;
+  overflow: hidden;
+}
+
+.rooms-image {
+  width: 70%;
+  height: 80%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.room-details {
+  flex: 0 0 50%; 
+  padding: 50px 0;
+  display: flex;
+  align-items: left;
+  text-align: left;
+}
+
+.details-container {
+  max-width: 400px; 
+  left: 1px;
 }
 
 .arrow-right {
-  right: 1px; /* Adjust this value as needed */
+  right: 1px; 
 }
+

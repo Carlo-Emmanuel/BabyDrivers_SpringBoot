@@ -28,11 +28,18 @@ export const NavBar = () => {
               Home
             </NavLink>
             <NavLink
+              to="rooms"
+              className={"navbar-link hover-underline-animation"}
+            >
+              Rooms
+            </NavLink>
+            <NavLink
               to="reservation"
               className={"navbar-link hover-underline-animation"}
             >
               Reservation
             </NavLink>
+            
             {/* 
             <Nav.Link
               href="#reservation"
@@ -55,7 +62,7 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <Link to="/managerr" className="vvd">
-              <span>Managerial Log In</span>
+              <span>Login</span>
             </Link>
           </span>
         </Navbar.Collapse>

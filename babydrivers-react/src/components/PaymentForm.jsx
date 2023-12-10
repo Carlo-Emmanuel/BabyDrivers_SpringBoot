@@ -7,7 +7,16 @@ const PaymentForm = () => {
   const navigateTo = useNavigate();
 
   const handleSubmit = async (e) => {
-    alert("Payment Accepted!");
+    try{
+   
+      alert("Email Confirmation Sent!");
+      // alert(
+      //   `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
+      // );
+      navigateTo("/");
+    } catch (error) {
+      console.error("Error processing payment:", error.responses);
+    }
   };
 
   return (
@@ -30,7 +39,7 @@ const PaymentForm = () => {
             CVV Number
           </label>
           <input
-            type="cvv"
+            type="password"
             class="form-control"
             id="cvv-number"
             placeholder="***"
@@ -38,13 +47,13 @@ const PaymentForm = () => {
           />
         </div>
         <div class="mb-3">
-          <label class="form-label">Start month:</label>
+          <label class="form-label">Expiration:</label>
           <input
             type="month"
             id="start"
             name="start"
             min="2018-03"
-            value="2018-05"
+            value="2027-05"
           />
         </div>
         <div className="mb-3">
@@ -72,7 +81,7 @@ const PaymentForm = () => {
           />
         </div>
         <div class="payment-button-container">
-          <button type="submit" id="submit" onClick={() => navigateTo("/")}>
+          <button type="submit" id="submit">
             Submit Payment
           </button>
         </div>

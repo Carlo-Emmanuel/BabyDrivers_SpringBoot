@@ -2,13 +2,17 @@ package com.babydrivers.babydriversserver.service;
 
 import com.babydrivers.babydriversserver.entity.Reservation;
 import com.babydrivers.babydriversserver.entity.Room;
+import com.babydrivers.babydriversserver.exception.RoomNotAvailableException;
 import com.babydrivers.babydriversserver.repository.ReservationRepository;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
+import com.babydrivers.babydriversserver.response.ReservationResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -17,6 +21,9 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final RoomService roomService;
+
+    @Autowired
+    private EmailService emailService;
 
     //Not sure if we'll need this
 //    @Autowired
@@ -38,6 +45,11 @@ public class ReservationServiceImpl implements ReservationService {
                                      LocalDate checkInDate,
                                      LocalDate checkOutDate,
                                      Long roomId){
+        //Check if room is available
+//        if (!isRoomAvailable(roomId, checkInDate, checkOutDate)) {
+//            throw new RoomNotAvailableException("Room not available for the specified dates");
+//        }
+
         Reservation reservation = new Reservation();
         reservation.setFirstName(firstName);
         reservation.setLastName(lastName);
@@ -55,9 +67,10 @@ public class ReservationServiceImpl implements ReservationService {
         //Calculate reservation total
         reservation.calculateReservationTotal();
 
-        return reservationRepository.save(reservation);
+        //Send confirmation email
+        emailService.sendReservationConfirmation("kennydampresentations@gmail.com", reservation);
 
-        //TODO: still need to check for room availability
+        return reservationRepository.save(reservation);
     }
 
     //Generate unique reservation number
@@ -65,8 +78,6 @@ public class ReservationServiceImpl implements ReservationService {
     public String generateReservationNo(){
         return UUID.randomUUID().toString().substring(0, 8);
     }
-
-    //TODO:Get all reservations
 
     //Get reservation by id
     @Override
@@ -78,6 +89,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation getReservationByReservationNo(String reservationNo){
         return reservationRepository.findByReservationNo(reservationNo);
+    }
+
+    //Get all reservations
+    @Override
+    public List<Reservation> getAllReservations(){
+        return reservationRepository.findAll();
     }
 
     //Edit reservation
@@ -99,6 +116,13 @@ public class ReservationServiceImpl implements ReservationService {
             //Save the updated reservation
             Reservation updatedReservation = reservationRepository.save(existingReservation);
 
+            //Calculate reservation total
+            updatedReservation.calculateReservationTotal();
+
+            reservationRepository.save(updatedReservation);
+
+            //Send confirmation email
+            emailService.sendReservationEditConfirmation("kennydampresentations@gmail.com", updatedReservation);
             return ResponseEntity.ok(updatedReservation);
         } else {
             return ResponseEntity.notFound().build();
@@ -113,10 +137,25 @@ public class ReservationServiceImpl implements ReservationService {
         //If found, delete reservation with response message
         if(reservation != null){
             reservationRepository.delete(reservation);
+
+            //Send cancellation email
+            emailService.sendReservationCancellation("kennydampresentations@gmail.com", reservation);
+
             return ResponseEntity.ok("Reservation " + reservationNo + " has been cancelled");
+//            return "Reservation " + reservationNo + " has been cancelled";
         }
         else{
             return ResponseEntity.notFound().build();
+//            throw new EntityNotFoundException("Reservation not found for reservationNo: " + reservationNo);
         }
     }
+
+    @Override
+    public boolean isRoomAvailable(Long roomId, LocalDate checkInDate, LocalDate checkOutDate) {
+        //Check if there are any reservations that overlap with the specified dates
+        List<Reservation> overlappingReservations = reservationRepository.findOverlappingReservations(roomId, checkInDate, checkOutDate);
+
+        return overlappingReservations.isEmpty();
+    }
+
 }

@@ -1,37 +1,63 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [id, setID] = useState("");
+  const [roomType, setRoomType] = useState("");
+  // const [id, setID] = useState("");
   const [checkInDate, setCheckIn] = useState("");
   const [checkOutDate, setCheckOut] = useState("");
-
+  const location = useLocation();
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    if (location.state && location.state.roomType) {
+      setRoomType(location.state.roomType);
+    }
+  }, [location.state]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = "http://localhost:8080/reservations/create";
+      let id;
+
+      switch (roomType) {
+        case "Single Bed($200/night)":
+          id = 9;
+          break;
+        case "Double Bed($400/night)":
+          id = 7;
+          break;
+        case "Single Suite($450/night)":
+          id = 10;
+          break;
+        case "Double Suite($800/night)":
+          id = 11;
+          break;
+        default:
+          id = 0;
+      }
+
       const response = await axios.post(url, {
         firstName: firstName,
         lastName: lastName,
-        // convert Dates from String to localDate
+        //Convert Dates from String to localDate
         checkInDate: new Date(checkInDate).toISOString().split("T")[0],
         checkOutDate: new Date(checkOutDate).toISOString().split("T")[0],
-        roomId: Number(id),
-        z,
+        roomId: Number(id)
       });
 
-      alert(
-        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
-      );
+      // alert(
+      //   `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
+      // );
 
       console.log(response.data);
-      ("/payment");
+      navigateTo("/payment");
     } catch (error) {
       console.error("Error submitting form:", error.responses);
       navigateTo("/payment");
@@ -104,7 +130,7 @@ const Form = () => {
             <option value="doubleSuite">Audi</option>
           </select>
         </div> */}
-        <div class="mb-3">
+        {/* <div class="mb-3">
           <label htmlFor="id" class="form-label">
             ID
           </label>
@@ -117,6 +143,24 @@ const Form = () => {
             placeholder="Enter room ID"
             required
           />
+        </div> */}
+        <div className="mb-3">
+          <label htmlFor="room-type" className="form-label">
+            Room Type
+          </label>
+          <select
+            id="room-type"
+            className="form-select"
+            value={roomType}
+            onChange={(e) => setRoomType(e.target.value)}
+            required
+          >
+            <option value="">Select Room Type</option>
+            <option value="Single Bed($200/night)">Single Bed($200/night)</option>
+            <option value="Double Bed($400/night)">Double Bed($400/night)</option>
+            <option value="Single Suite($450/night)">Single Suite($450/night)</option>
+            <option value="Double Suite($800/night)">Double Suite($800/night)</option>
+          </select>
         </div>
         <div className="mb-3">
           <label htmlFor="user-check-in" class="form-label">
