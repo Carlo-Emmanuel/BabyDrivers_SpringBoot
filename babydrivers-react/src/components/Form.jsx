@@ -53,12 +53,7 @@ const Form = () => {
       });
 
       alert(
-        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\n
-                                         First Name: ${firstName}\n
-                                         Last Name: ${lastName}\n
-                                         Check In Date: ${checkInDate}\n
-                                         Check Out Date: ${checkOutDate}\n
-                                         Reservation Total: $${response.data.reservationTotal}`
+        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
       );
 
       console.log(response.data);
@@ -100,7 +95,6 @@ const Form = () => {
             required
           />
         </div>
-
         {/* <div class="mb-3">
           <label htmlFor="user-email" class="form-label">
             Email
@@ -137,7 +131,6 @@ const Form = () => {
           </select>
         </div> */}
         {/* <div class="mb-3">
-        <div class="mb-3">
           <label htmlFor="id" class="form-label">
             ID
           </label>
@@ -151,7 +144,6 @@ const Form = () => {
             required
           />
         </div> */}
-
         <div className="mb-3">
           <label htmlFor="room-type" className="form-label">
             Room Type
