@@ -67,6 +67,7 @@ public class ReservationResponse {
                         "Below are the complete details of your booking:\n\n" +
                         "*Booking details*\n" +
                         "Booking Number: %s\n" +
+                        "Room Type: %s\n" +
                         "Check-in date: %s\n" +
                         "Check-out date: %s\n\n" +
                         "*Guest information*\n" +

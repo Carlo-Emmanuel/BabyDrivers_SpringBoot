@@ -1,5 +1,6 @@
 import { NavBar } from "./components/NavBar";
 import HomeBody from "./components/HomeBody";
+import Rooms from "./components/Rooms";
 import Form from "./components/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -27,6 +28,7 @@ function App() {
               </>
             }
           ></Route>
+          <Route path="/rooms" element={<Rooms></Rooms>}></Route> 
           <Route path="/reservation" element={<Form></Form>}></Route>
           <Route path="/managerr" element={<Managerr></Managerr>}></Route>
           <Route path="/payment" element={<PaymentForm></PaymentForm>}></Route>
