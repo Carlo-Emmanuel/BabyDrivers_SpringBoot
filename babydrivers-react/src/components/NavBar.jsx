@@ -28,11 +28,30 @@ export const NavBar = () => {
               Home
             </NavLink>
             <NavLink
+              to="rooms"
+              className={"navbar-link hover-underline-animation"}
+            >
+              Rooms
+            </NavLink>
+            <NavLink
               to="reservation"
               className={"navbar-link hover-underline-animation"}
             >
               Reservation
             </NavLink>
+            
+            {/* 
+            <Nav.Link
+              href="#reservation"
+              className={
+                activeLink === "reservation"
+                  ? "active navbar-link"
+                  : "navbar-link"
+              }
+              onClick={() => onUpdateActiveLink("reservation")}
+            >
+              Reservation
+            </Nav.Link> */}
 
             <Nav.Link
               href="#contact"
@@ -43,7 +62,7 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <Link to="/managerr" className="vvd">
-              <span>Managerial Log In</span>
+              <span>Manager</span>
             </Link>
           </span>
         </Navbar.Collapse>

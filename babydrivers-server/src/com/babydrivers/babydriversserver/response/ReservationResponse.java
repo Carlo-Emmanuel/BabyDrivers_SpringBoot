@@ -29,4 +29,72 @@ public class ReservationResponse {
         this.reservationTotal = reservation.getReservationTotal();
         this.reservationNo = reservation.getReservationNo();
     }
+
+    //Formats reservation details into a string for confirmation email
+//    public String toFormattedString() {
+//        return String.format("Reservation Details:\n\n" +
+//                        "Name: %s %s\n" +
+//                        "Check-In Date: %s\n" +
+//                        "Check-Out Date: %s\n" +
+//                        "Room Type: %s\n" +
+//                        "Total: %s\n" +
+//                        "Reservation Number: %s",
+//                        firstName, lastName, checkInDate, checkOutDate, roomType, reservationTotal, reservationNo);
+//    }
+
+    //New version of toFormattedString() that is more readable
+    public String toFormattedString() {
+        return String.format("Dear Guest,\n\n" +
+                        "We are happy to announce that your reservation is confirmed!\n\n" +
+                        "Below are the complete details of your booking:\n\n" +
+                        "*Booking details*\n" +
+                        "Booking Number: %s\n" +
+                        "Check-in date: %s\n" +
+                        "Check-out date: %s\n\n" +
+                        "*Guest information*\n" +
+                        "First Name: %s\n" +
+                        "Last Name: %s\n" +
+                        "Email: %s\n\n" +
+                        "*Payment Information*\n" +
+                        "Total Amount: %s\n\n" +
+                        "We anticipate your stay with us!",
+                        reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
+    }
+
+    public String toCancellationFormattedString() {
+        return String.format("Dear Guest,\n\n" +
+                        "This is a confirmation that your booking has been canceled\n\n" +
+                        "Below are the complete details of your booking:\n\n" +
+                        "*Booking details*\n" +
+                        "Booking Number: %s\n" +
+                        "Room Type: %s\n" +
+                        "Check-in date: %s\n" +
+                        "Check-out date: %s\n\n" +
+                        "*Guest information*\n" +
+                        "First Name: %s\n" +
+                        "Last Name: %s\n" +
+                        "Email: %s\n\n" +
+                        "*Payment Information*\n" +
+                        "Total Amount: %s\n\n" +
+                        "We hope to see you again soon!",
+                reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
+    }
+
+    public String toEditFormattedString() {
+        return String.format("Dear Guest,\n\n" +
+                        "This is a confirmation that your booking has been changed\n\n" +
+                        "Below are the complete details of your booking:\n\n" +
+                        "*Booking details*\n" +
+                        "Booking Number: %s\n" +
+                        "Check-in date: %s\n" +
+                        "Check-out date: %s\n\n" +
+                        "*Guest information*\n" +
+                        "First Name: %s\n" +
+                        "Last Name: %s\n" +
+                        "Email: %s\n\n" +
+                        "*Payment Information*\n" +
+                        "Total Amount: %s\n\n" +
+                        "We hope to see you soon!",
+                reservationNo, checkInDate, checkOutDate, firstName, lastName, "kennydampresentations@gmail.com", reservationTotal);
+    }
 }
