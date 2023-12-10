@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
@@ -10,8 +11,14 @@ const Form = () => {
   // const [id, setID] = useState("");
   const [checkInDate, setCheckIn] = useState("");
   const [checkOutDate, setCheckOut] = useState("");
-
+  const location = useLocation();
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    if (location.state && location.state.roomType) {
+      setRoomType(location.state.roomType);
+    }
+  }, [location.state]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +27,7 @@ const Form = () => {
       let id;
 
       switch (roomType) {
-        case "Single Bed ($200/night)":
+        case "Single Bed($200/night)":
           id = 9;
           break;
         case "Double Bed($400/night)":
@@ -46,7 +53,12 @@ const Form = () => {
       });
 
       alert(
-        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
+        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\n
+                                         First Name: ${firstName}\n
+                                         Last Name: ${lastName}\n
+                                         Check In Date: ${checkInDate}\n
+                                         Check Out Date: ${checkOutDate}\n
+                                         Reservation Total: $${response.data.reservationTotal}`
       );
 
       console.log(response.data);
@@ -149,7 +161,7 @@ const Form = () => {
             required
           >
             <option value="">Select Room Type</option>
-            <option value="Single Bed ($200/night)">Single Bed ($200/night)</option>
+            <option value="Single Bed($200/night)">Single Bed($200/night)</option>
             <option value="Double Bed($400/night)">Double Bed($400/night)</option>
             <option value="Single Suite($450/night)">Single Suite($450/night)</option>
             <option value="Double Suite($800/night)">Double Suite($800/night)</option>

@@ -50,7 +50,7 @@ const EditReservation = () => {
       console.log("Reservation updated:", response.data);
       setModalVisibility(false);
       alert(
-        `Form submitted successfully!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\nReservation No: ${response.data.reservationNo}`
+        `Form submitted successfully!\n\nReservation No: ${response.data.reservationNo}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nCheck In Date: ${checkInDate}\nCheck Out Date: ${checkOutDate}\nReservation Total: $${response.data.reservationTotal}\n`
       );
     } catch (error) {
       console.error("Error updating reservation:", error);
@@ -171,7 +171,7 @@ const EditReservation = () => {
                         required
                       >
                         <option value="">Select Room Type</option>
-                        <option value="Single Bed ($200/night)">Single Bed ($200/night)</option>
+                        <option value="Single Bed ($200/night)">Single Bed($200/night)</option>
                         <option value="Double Bed($400/night)">Double Bed($400/night)</option>
                         <option value="Single Suite($450/night)">Single Suite($450/night)</option>
                         <option value="Double Suite($800/night)">Double Suite($800/night)</option>
