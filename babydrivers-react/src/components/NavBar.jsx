@@ -39,6 +39,7 @@ export const NavBar = () => {
             >
               Reservation
             </NavLink>
+<<<<<<< HEAD
             
             {/* 
             <Nav.Link
@@ -52,6 +53,8 @@ export const NavBar = () => {
             >
               Reservation
             </Nav.Link> */}
+=======
+>>>>>>> 597f854628f9f71c82921cd8aa3c32c941ae5958
 
             <Nav.Link
               href="#contact"
@@ -62,7 +65,7 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <Link to="/managerr" className="vvd">
-              <span>Let's connect</span>
+              <span>Managerial Log In</span>
             </Link>
           </span>
         </Navbar.Collapse>

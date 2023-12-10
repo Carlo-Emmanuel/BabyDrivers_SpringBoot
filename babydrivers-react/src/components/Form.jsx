@@ -100,6 +100,7 @@ const Form = () => {
             required
           />
         </div>
+
         {/* <div class="mb-3">
           <label htmlFor="user-email" class="form-label">
             Email
@@ -136,6 +137,7 @@ const Form = () => {
           </select>
         </div> */}
         {/* <div class="mb-3">
+        <div class="mb-3">
           <label htmlFor="id" class="form-label">
             ID
           </label>
@@ -149,6 +151,7 @@ const Form = () => {
             required
           />
         </div> */}
+
         <div className="mb-3">
           <label htmlFor="room-type" className="form-label">
             Room Type

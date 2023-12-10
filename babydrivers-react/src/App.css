@@ -74,7 +74,7 @@ body{
   }
 }
 
-/************ Navbar Css ************/
+/* Navbar Css */
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -277,6 +277,18 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: #121212;
 }
 
+.intro-text{
+    justify-content: center;
+}
+
+.info-container{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
 section p {
   text-align: center;
   margin: 0;
@@ -288,14 +300,6 @@ section p {
   display: flex;
   flex-direction: column;
   gap :10px
-}
-
-.info-container{
-  margin-top: 150px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0px;
 }
 
 .header-photo-container{
@@ -478,13 +482,12 @@ section p {
   width: 600px;
   height: 400px;
   transition: transform 0.5s ease; 
-
 }
 
 .slide {
   border-radius: 0.5rem;
-  width: 100%; 
-  height: 300px; 
+  width: 400%;
+  height: 600px; 
 }
 
 .slide-hidden {
@@ -496,28 +499,25 @@ section p {
   cursor:pointer;
 }
 
-
-
 .indicators {
   position: absolute;
-  bottom: -140px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -125%;
+  left: 40%;
   display: flex;
-  gap: 5px;
+  height: -2rem;
 }
+
 
 .indicator {
-  width: 5px;
-  height: 5px;
   background-color: white;
-  border: 1px solid white;
+  border: 0.5px solid white;
   cursor: pointer;
-
+  border-radius: 10%;
+  width: -2rem;
 }
 
-.indicator.active {
-  background-color: #0087ca; 
+.indicator-inactive {
+  background-color: gray; 
 }
 
 .arrow {
@@ -530,13 +530,13 @@ section p {
   cursor: pointer;
 }
 
-.arrow-left {
+/* .arrow-left {
   left: 10px; 
-}
+} */
 
-.arrow-right {
+/* .arrow-right {
   right: 10px; 
-}
+} */
 
 /* MANAGER VIEW CSS */
 .rooms-table {
@@ -616,4 +616,9 @@ section p {
 
 .details-container {
   max-width: 400px; 
+  left: 1px;
+}
+
+.arrow-right {
+  right: 1px; 
 }
