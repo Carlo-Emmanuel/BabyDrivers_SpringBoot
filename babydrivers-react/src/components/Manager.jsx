@@ -44,7 +44,7 @@ const RoomFetchingComponent = () => {
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Reservations');
-    XLSX.writeFile(wb, 'reservations_report.xlsx');
+    XLSX.writeFile(wb, 'reservations_report_2023.xlsx');
   };
 
   return (

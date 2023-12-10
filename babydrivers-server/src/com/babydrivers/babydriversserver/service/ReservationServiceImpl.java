@@ -6,6 +6,7 @@ import com.babydrivers.babydriversserver.exception.RoomNotAvailableException;
 import com.babydrivers.babydriversserver.repository.ReservationRepository;
 import com.babydrivers.babydriversserver.request.ReservationRequest;
 import com.babydrivers.babydriversserver.response.ReservationResponse;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -141,9 +142,11 @@ public class ReservationServiceImpl implements ReservationService {
             emailService.sendReservationCancellation("kennydampresentations@gmail.com", reservation);
 
             return ResponseEntity.ok("Reservation " + reservationNo + " has been cancelled");
+//            return "Reservation " + reservationNo + " has been cancelled";
         }
         else{
             return ResponseEntity.notFound().build();
+//            throw new EntityNotFoundException("Reservation not found for reservationNo: " + reservationNo);
         }
     }
 
