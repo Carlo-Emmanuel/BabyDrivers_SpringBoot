@@ -62,7 +62,7 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <Link to="/managerr" className="vvd">
-              <span>Managerial Log In</span>
+              <span>Manager</span>
             </Link>
           </span>
         </Navbar.Collapse>
