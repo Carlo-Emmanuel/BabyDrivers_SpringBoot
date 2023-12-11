@@ -13,7 +13,7 @@ const RoomFetchingComponent = () => {
   const [sortOrder, setSortOrder] = useState('asc'); 
   const [sortBy, setSortBy] = useState('reservationTotal'); 
 
-  const url = "http://localhost:8080/reservations/all";
+  const url = "http://localhost:8010/reservations/all";
 
   useEffect(() => {
     const fetchData = async () => {
