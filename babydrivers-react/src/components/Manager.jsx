@@ -10,6 +10,8 @@ const RoomFetchingComponent = () => {
   const [username, setUsername] = useState('');
   const [logIn, setLogIn] = useState(false);
   const [pword, setPword] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc'); 
+  const [sortBy, setSortBy] = useState('reservationTotal'); 
 
   const url = "http://localhost:8080/reservations/all";
 
@@ -46,6 +48,23 @@ const RoomFetchingComponent = () => {
     XLSX.utils.book_append_sheet(wb, ws, 'Reservations');
     XLSX.writeFile(wb, 'reservations_report_2023.xlsx');
   };
+
+  const handleSort = (property) => {
+    setSortBy(property);
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
+  const getArrow = (property) => {
+    if (sortBy === property) {
+      return sortOrder === 'asc' ? '▲' : '▼';
+    }
+    return '';
+  };
+
+  const sortedData = [...data].sort((a, b) => {
+    const order = sortOrder === 'asc' ? 1 : -1;
+    return a[sortBy] > b[sortBy] ? order : -order;
+  });
 
   return (
     <div className="manager-container"> 
@@ -94,17 +113,31 @@ const RoomFetchingComponent = () => {
         <table className="rooms-table">
           <thead>
             <tr>
-              <th>Reservation No</th>
-              <th>Room Type</th>
-              <th>Guest First Name</th>
-              <th>Guest Last Name</th>
-              <th>Check In Date</th>
-              <th>Check Out Date</th>
-              <th>Total Due</th>
+              <th>
+                Reservation No 
+              </th>
+              <th onClick={() => handleSort('roomType')}>
+                Room Type <span>{getArrow('roomType')}</span>
+              </th>
+              <th onClick={() => handleSort('firstName')}>
+                Guest First Name <span>{getArrow('firstName')}</span>
+              </th>
+              <th onClick={() => handleSort('lastName')}>
+                Guest Last Name <span>{getArrow('lastName')}</span>
+              </th>
+              <th onClick={() => handleSort('checkInDate')}>
+                Check In Date <span>{getArrow('checkInDate')}</span>
+              </th>
+              <th onClick={() => handleSort('checkOutDate')}>
+                Check Out Date <span>{getArrow('checkOutDate')}</span>
+              </th>
+              <th onClick={() => handleSort('reservationTotal')}>
+                Total Due <span>{getArrow('reservationTotal')}</span>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {data.map((reservation) => (
+          {sortedData.map((reservation) => (
               <tr key={reservation.id}>
                 <td>{reservation.reservationNo}</td>
                 <td>{reservation.roomType}</td>
