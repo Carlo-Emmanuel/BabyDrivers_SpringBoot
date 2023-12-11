@@ -267,9 +267,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-decoration: underline;
 }
 
-
-
-
 .main-photos{
   display: flex;
   flex-direction: row;
@@ -566,7 +563,6 @@ section p {
   padding: 8px; 
   text-align: left;
 }
-
 
 /* Rooms CSS */
 

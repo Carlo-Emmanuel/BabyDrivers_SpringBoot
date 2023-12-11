@@ -15,12 +15,4 @@ const ContactPage = () => {
   )
 }
 
-        // <h4>
-        //     <ol>
-        //         <li>
-                    
-        //         </li>
-        //     </ol>
-        // </h4>
-
 export default ContactPage
