@@ -83,7 +83,7 @@ const EditReservation = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/reservations/${confirmCode}`
+        `http://localhost:8010/reservations/${confirmCode}`
       );
 
       setRoomData(response.data);
