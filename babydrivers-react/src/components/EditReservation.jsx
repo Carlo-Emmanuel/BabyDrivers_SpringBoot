@@ -34,7 +34,7 @@ const EditReservation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:8010/reservations/${confirmCode}`;
+      const url = `http://localhost:8080/reservations/${confirmCode}`;
 
       let id;
 

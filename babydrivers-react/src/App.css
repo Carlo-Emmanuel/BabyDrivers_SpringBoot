@@ -570,6 +570,7 @@ section p {
   text-align: start;
   margin-top: 30px;
   display: inline-block;
+
 }
 
 /* position:relative;
@@ -660,13 +661,20 @@ position:absolute; */
 }
 
 .float-container {
-  border: 3px solid #fff;
-  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
 }
 
 .float-child {
-  width: 50%;
-  float: left;
-  padding: 0px;
-  border: 2px solid red;
-}  
+  flex: 1;
+}
+
+.contact-info-container {
+  max-width: 60%; 
+  text-align: left;
+}
+
+.contact-photos {
+  max-width: 60%; 
+}
