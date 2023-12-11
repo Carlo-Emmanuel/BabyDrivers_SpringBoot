@@ -528,11 +528,11 @@ section p {
 }
 
 .arrow-left {
-  left: 15px; 
+  left: 1px; 
 }
 
 .arrow-right {
-  right: 15px; 
+  right: 1px; 
 }
 
 /* Contact Page CSS */
@@ -541,25 +541,28 @@ section p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-left: 100px;
   display: flex;
 }
 
 .contact-header {
   margin-top: 100px;
-  margin-left: 50px;
+  margin-left: 75px;
   align-items: center;
   justify-content: center;
 }
 
 .contact-section-container{
   flex-direction: column;
-  margin-left: 250px;
+  margin-left: 75px;
+  margin-top: 25px;
 }
 
 .contact-photos{
-  display: flex;
+  display: inline;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
+  margin-left: 0px;
 }
 
 .contact-carousel{
@@ -567,13 +570,24 @@ section p {
 }
 
 .contact-info {
-  text-align: start;
+  text-align: left;
   margin-top: 30px;
-  display: inline-block;
+  display: flex;
 }
 
-/* position:relative;
-position:absolute; */
+.float-child {
+  width: 30%;
+  float: left;
+  padding: 0px;
+  /* border: 2px solid red; */
+}
+
+.float-child-two {
+  width: 70%;
+  float: left;
+  padding: 0px;
+  /* border: 2px solid blue; */
+}
 
 /* MANAGER VIEW CSS */
 .rooms-table {
@@ -658,15 +672,3 @@ position:absolute; */
 .arrow-right {
   right: 1px; 
 }
-
-.float-container {
-  border: 3px solid #fff;
-  padding: 0px;
-}
-
-.float-child {
-  width: 50%;
-  float: left;
-  padding: 0px;
-  border: 2px solid red;
-}  
