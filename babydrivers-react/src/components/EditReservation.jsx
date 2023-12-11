@@ -20,7 +20,7 @@ const EditReservation = () => {
     if(isConfirmed){
       try {
         const response = await axios.delete(
-          `http://localhost:8080/reservations/cancel/${confirmCode}`
+          `http://localhost:8010/reservations/cancel/${confirmCode}`
         );
         alert("Reservation Canceled!");
         navigateTo("/");
@@ -34,7 +34,7 @@ const EditReservation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `http://localhost:8080/reservations/${confirmCode}`;
+      const url = `http://localhost:8010/reservations/${confirmCode}`;
 
       let id;
 

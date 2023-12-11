@@ -14,7 +14,7 @@
   src: url('./assets/fonts/CentraNo2-Book.ttf');
   font-weight: 400;
 }
-/*Defult CSS*/
+/*Default CSS*/
 *{
   margin: 0;
   padding: 0;
@@ -258,17 +258,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: center;
   flex-direction: column;
   padding-top: 100px;
- 
-
 }
 
 .section-head{
   font-size: 25;
   text-decoration: underline;
 }
-
-
-
 
 .main-photos{
   display: flex;
@@ -499,12 +494,14 @@ section p {
   cursor:pointer;
 }
 
+/* Failed Indicators Components
+
 .indicators {
   position: absolute;
-  bottom: -125%;
+  bottom: 10px;
   left: 40%;
   display: flex;
-  height: -2rem;
+  height: 0px;
 }
 
 
@@ -518,7 +515,7 @@ section p {
 
 .indicator-inactive {
   background-color: gray; 
-}
+} */
 
 .arrow {
   position: absolute;
@@ -530,13 +527,53 @@ section p {
   cursor: pointer;
 }
 
-/* .arrow-left {
-  left: 10px; 
-} */
+.arrow-left {
+  left: 15px; 
+}
 
-/* .arrow-right {
-  right: 10px; 
-} */
+.arrow-right {
+  right: 15px; 
+}
+
+/* Contact Page CSS */
+.contact-container {
+  padding-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.contact-header {
+  margin-top: 100px;
+  margin-left: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-section-container{
+  flex-direction: column;
+  margin-left: 250px;
+}
+
+.contact-photos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-carousel{
+  bottom: 10px;
+}
+
+.contact-info {
+  text-align: start;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+/* position:relative;
+position:absolute; */
 
 /* MANAGER VIEW CSS */
 .rooms-table {
@@ -566,7 +603,6 @@ section p {
   padding: 8px; 
   text-align: left;
 }
-
 
 /* Rooms CSS */
 
@@ -623,3 +659,14 @@ section p {
   right: 1px; 
 }
 
+.float-container {
+  border: 3px solid #fff;
+  padding: 0px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 0px;
+  border: 2px solid red;
+}  
