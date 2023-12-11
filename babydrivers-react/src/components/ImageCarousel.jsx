@@ -29,7 +29,14 @@ const ImageCarousel = ({ data }) => {
         );
       })}
       <BsChevronRight className="arrow arrow-right" onClick={nextSlide} />
-      <span className="indicators">
+    </div>
+  );
+};
+
+export default ImageCarousel;
+
+//Failed indicators component
+/* <span className="indicators">
         {data.map((_, index) => {
           return (
             <button
@@ -43,9 +50,4 @@ const ImageCarousel = ({ data }) => {
             ></button>
           );
         })}
-      </span>
-    </div>
-  );
-};
-
-export default ImageCarousel;
+      </span> */

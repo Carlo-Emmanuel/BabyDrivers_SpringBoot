@@ -54,7 +54,7 @@ export const NavBar = () => {
             </Nav.Link> */}
 
             <Nav.Link
-              href="#contact"
+              href="contact"
               className={"navbar-link hover-underline-animation"}
             >
               Contact

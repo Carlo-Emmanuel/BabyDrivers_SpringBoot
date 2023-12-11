@@ -11,7 +11,7 @@ const RoomFetchingComponent = () => {
   const [logIn, setLogIn] = useState(false);
   const [pword, setPword] = useState('');
 
-  const url = "http://localhost:8080/reservations/all";
+  const url = "http://localhost:8010/reservations/all";
 
   useEffect(() => {
     const fetchData = async () => {

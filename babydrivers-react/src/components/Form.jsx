@@ -23,21 +23,21 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/reservations/create";
+      const url = "http://localhost:8010/reservations/create";
       let id;
 
       switch (roomType) {
         case "Single Bed($200/night)":
-          id = 9;
+          id = 1;
           break;
         case "Double Bed($400/night)":
-          id = 7;
+          id = 2;
           break;
         case "Single Suite($450/night)":
-          id = 10;
+          id = 3;
           break;
         case "Double Suite($800/night)":
-          id = 11;
+          id = 4;
           break;
         default:
           id = 0;
