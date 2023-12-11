@@ -6,9 +6,8 @@ import { contacts_slides } from "./contactsCarousel.json";
 const ContactPage = () => {
   return (
     <div className="contact-container">
+      <h2 className='contact-header'>Here to serve your needs in California</h2>
       <section className="contact-section-container">
-        <h2 className='contact-header'>Here to serve your needs in California</h2>
-        <div className='float-container'>
         <div className='float-child'>
           <p className="contact-info">
             Phone: 1(800) HTL-CALI
@@ -22,11 +21,9 @@ const ContactPage = () => {
           </p>
           
         </div>
-        <div className="contact-photos contact-carousel float-child">
+        <div className="contact-photos contact-carousel float-child-two">
             <ImageCarousel data={contacts_slides}></ImageCarousel>
           </div>
-
-        </div>
       </section>
     </div>
   )
