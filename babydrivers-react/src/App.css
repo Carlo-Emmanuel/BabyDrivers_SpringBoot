@@ -14,7 +14,7 @@
   src: url('./assets/fonts/CentraNo2-Book.ttf');
   font-weight: 400;
 }
-/*Defult CSS*/
+/*Default CSS*/
 *{
   margin: 0;
   padding: 0;
@@ -258,17 +258,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: center;
   flex-direction: column;
   padding-top: 100px;
- 
-
 }
 
 .section-head{
   font-size: 25;
   text-decoration: underline;
 }
-
-
-
 
 .main-photos{
   display: flex;
@@ -499,12 +494,14 @@ section p {
   cursor:pointer;
 }
 
+/* Failed Indicators Components
+
 .indicators {
   position: absolute;
-  bottom: -125%;
+  bottom: 10px;
   left: 40%;
   display: flex;
-  height: -2rem;
+  height: 0px;
 }
 
 
@@ -518,7 +515,7 @@ section p {
 
 .indicator-inactive {
   background-color: gray; 
-}
+} */
 
 .arrow {
   position: absolute;
@@ -530,13 +527,67 @@ section p {
   cursor: pointer;
 }
 
-/* .arrow-left {
-  left: 10px; 
-} */
+.arrow-left {
+  left: 1px; 
+}
 
-/* .arrow-right {
-  right: 10px; 
-} */
+.arrow-right {
+  right: 1px; 
+}
+
+/* Contact Page CSS */
+.contact-container {
+  padding-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 100px;
+  display: flex;
+}
+
+.contact-header {
+  margin-top: 100px;
+  margin-left: 75px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-section-container{
+  flex-direction: column;
+  margin-left: 75px;
+  margin-top: 25px;
+}
+
+.contact-photos{
+  display: inline;
+  flex-direction: column;
+  justify-content: left;
+  margin-left: 0px;
+}
+
+.contact-carousel{
+  bottom: 10px;
+}
+
+.contact-info {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+}
+
+.float-child {
+  width: 30%;
+  float: left;
+  padding: 0px;
+  /* border: 2px solid red; */
+}
+
+.float-child-two {
+  width: 70%;
+  float: left;
+  padding: 0px;
+  /* border: 2px solid blue; */
+}
 
 /* MANAGER VIEW CSS */
 .rooms-table {
@@ -566,7 +617,6 @@ section p {
   padding: 8px; 
   text-align: left;
 }
-
 
 /* Rooms CSS */
 
@@ -622,4 +672,3 @@ section p {
 .arrow-right {
   right: 1px; 
 }
-
